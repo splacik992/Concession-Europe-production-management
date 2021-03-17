@@ -10356,10 +10356,17 @@ a:focus {
   border-radius: 0.35rem;
   white-space: nowrap;
 }
+thead{
+  background: #C12026;
+  color: #ffffff;
+}
 
+tr:nth-child(even){
+  background: #ddd;
+}
 .sidebar .nav-item .collapse .collapse-inner .collapse-item:hover,
 .sidebar .nav-item .collapsing .collapse-inner .collapse-item:hover {
-  background-color: #eaecf4;
+  background-color: #ccc;
 }
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item:active,
