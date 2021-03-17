@@ -1,6 +1,13 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: danie
+  Date: 17.03.2021
+  Time: 21:33
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pl">
 <head>
 
     <meta charset="utf-8">
@@ -454,11 +461,15 @@
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
-                                            <td>Amazon Warszawa</td>
-                                            <td>3</td>
+                                            <td>61</td>
+                                            <td>4</td>
                                             <td></td>
                                             <td></td>
-                                            <td></td>
+                                            <td>
+                                                <select>
+                                                    <option th:each="status: ${statuses}" th:text="${status}"></option>
+                                                </select>
+                                            </td>
                                             <td></td>
                                         </tr>
                                         <tr>
