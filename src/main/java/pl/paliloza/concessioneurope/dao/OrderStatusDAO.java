@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface OrderStatusDAO extends JpaRepository<OrderStatus,Long> {
-    @Query(value ="select name from order_status" ,nativeQuery = true)
+    @Query(value ="select * from order_status" ,nativeQuery = true)
     List<OrderStatus> findAll();
 }

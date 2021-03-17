@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
             <jsp:include page="header.jsp"/>
 
@@ -85,7 +86,9 @@
                                             <td></td>
                                             <td>
                                                 <select>
-                                                    <option th:each="status: ${statuses}" th:text="${status}"></option>
+                                                    <c:forEach items="${statuses}" var="status">
+                                                    <option>${status}</option>
+                                                    </c:forEach>
                                                 </select>
                                             </td>
                                             <td></td>
