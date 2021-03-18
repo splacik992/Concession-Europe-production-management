@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
             <jsp:include page="header.jsp"/>
 
@@ -46,8 +47,24 @@
                                                        id="count" placeholder="Ilość">
                                             </div>
                                             <button type="submit" class="btn btn-lg btn-primary shadow-sm">Dodaj</button>
-                                        </div>
 
+                                        </div>
+                                        <section class="container">
+
+                                            <c:forEach items="${processesList}" var="process" varStatus="counter">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" value="${process}" id="${process}">
+                                                    <label class="form-check-label" for="${process}">
+                                                        ${process}
+                                                    </label>
+                                                </div>
+                                            </c:forEach>
+                                        </section>
+                                        <p>Kolejność:</p>
+
+                                        <div id="result">
+
+                                        </div>
                                     </form>
                                     <hr>
 
@@ -85,7 +102,9 @@
                                             <td></td>
                                             <td>
                                                 <select>
-                                                    <option th:each="status: ${statuses}" th:text="${status}"></option>
+                                                    <c:forEach items="${statuses}" var="status">
+                                                    <option>${status}</option>
+                                                    </c:forEach>
                                                 </select>
                                             </td>
                                             <td></td>

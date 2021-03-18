@@ -15,7 +15,8 @@ public class MainController {
 
     @GetMapping("/")
     public String viewMainModel(Model model){
-        model.addAttribute("statuses",orderServices.ordershow());
+        model.addAttribute("statuses",orderServices.orderShow());
+        model.addAttribute("processesList",orderServices.processesShow());
         return "index";
     }
 
