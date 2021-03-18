@@ -17,10 +17,13 @@ $("[type=checkbox]").on('change', function() { // always use change event
             th.classList.add("btn-sm");
             th.classList.add("ml-2");
             th.setAttribute("disabled","true");
-            th.setAttribute("id",this.value);
+            th.setAttribute("name", "processButton");
             th.innerText = order.indexOf(el) + 1 +" "+ el;
             result.appendChild(th);
         })
+        sessionStorage.setItem("orderSess",order.toString());
+
+
     }
 
     if (this.checked) {    // if checked
@@ -32,9 +35,10 @@ $("[type=checkbox]").on('change', function() { // always use change event
         th.classList.add("btn-sm");
         th.classList.add("ml-2");
         th.setAttribute("disabled","true");
-        th.setAttribute("id",this.value);
+        th.setAttribute("name","processButton");
         th.innerText = order.indexOf(this.value) +1 +" "+ this.value;
         result.appendChild(th);
+        sessionStorage.setItem("orderSess",order.toString());
     }
 
     // <------------------------------------For demonstration

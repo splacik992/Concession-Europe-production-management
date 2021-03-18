@@ -2,6 +2,8 @@ package pl.paliloza.concessioneurope.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 @Entity(name = "orders_table")
 public class Order {
@@ -16,7 +18,16 @@ public class Order {
     private String principal;
     @OneToOne
     private OrderStatus orderStatus;
+    @OneToMany
+    Set<Processes> processes;
 
+    public Set<Processes> getProcesses() {
+        return processes;
+    }
+
+    public void setProcesses(Set<Processes> processes) {
+        this.processes = processes;
+    }
 
     public Long getId() {
         return id;

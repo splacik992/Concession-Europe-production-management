@@ -30,6 +30,7 @@
                                     <form:form class="user" method="post" action="/" modelAttribute="order">
                                         <div class="form-group row">
                                             <div class="col-sm-3">
+                                                <input type="hidden" id="a" name="orderListener">
                                                 <form:input path="materialName" type="text" class="form-control form-control-user" id="material"
                                                        placeholder="Materiał"/>
                                             </div>
@@ -52,11 +53,11 @@
                                         </div>
                                         <section class="container">
 
-                                            <c:forEach items="${processesList}" var="process" varStatus="counter">
+                                            <c:forEach items="${processesList}" var="processes" varStatus="counter">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="${process}" id="${process}">
-                                                    <label class="form-check-label" for="${process}">
-                                                        ${process}
+                                                    <input class="form-check-input" type="checkbox" name="processName" value="${processes}" id="${processes}">
+                                                    <label class="form-check-label" for="${processes}">
+                                                        ${processes}
                                                     </label>
                                                 </div>
                                             </c:forEach>
@@ -92,6 +93,7 @@
                                             <th>Data</th>
                                             <th>Status zamówienia</th>
                                             <th>Realizacja</th>
+                                            <th>Kolejka</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -104,6 +106,7 @@
                                             <td>${order.count}</td>
                                             <td>${order.principal}</td>
                                             <td>${order.date}</td>
+
                                             <td>
                                                 <select>
                                                     <c:forEach items="${statuses}" var="status">
@@ -111,7 +114,7 @@
                                                     </c:forEach>
                                                 </select>
                                             </td>
-                                            <td></td>
+
                                         </tr>
                                         </c:forEach>
 

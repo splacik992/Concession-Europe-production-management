@@ -11,5 +11,5 @@ import java.util.List;
 public interface ProcessesDAO extends JpaRepository<Processes,Long> {
     @Query(value = "select * from processes",nativeQuery = true)
     List<Processes> getAll();
-
+    Processes findByName(String name);
 }
