@@ -9,10 +9,7 @@ import pl.paliloza.concessioneurope.entity.OrderStatus;
 import pl.paliloza.concessioneurope.entity.Processes;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class OrderService {
@@ -44,7 +41,8 @@ public class OrderService {
         return processesList;
     }
 
-    public void add(Order order) {
+    public void add(Order order, List<Processes> newProcessList) {
+        order.setProcesses(newProcessList);
         order.setDate(LocalDate.now());
         orderDAO.save(order);
     }

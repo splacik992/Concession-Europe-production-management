@@ -2318,6 +2318,87 @@ textarea.form-control {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+#CNC span{
+  background-color: #ca2819;
+
+}
+#Okleiniarka span{
+  background-color:  #006400;
+}
+#Transport span{
+  background-color: #000;
+}
+#Montaż span{
+  background-color:  #6f42c1;
+}
+#Szlifiernia span{
+  background-color:  #dda20a;
+}
+#Lakiernia span{
+  background-color: #f34f73;
+}
+#Prasa span{
+  background-color: gray;
+}
+#Pakowanie span{
+  background-color: #7cfc00;
+}
+#Piła-panelowa span{
+  background-color: #8f5c38;
+}
+#Dział-drzewny span{
+  background-color: #6495ed;
+}
+
+.containerForInputs{
+  display: block;
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.form-check .containerForInputs input{
+  position: absolute;
+  top: 4px;
+  left: 0;
+  opacity: 0;
+  z-index: 2;
+  cursor: pointer;
+  height: 15px;
+  width: 100%;
+}
+
+.containerForInputs input ~ .checkmark{
+  position: absolute;
+  border: 1px solid #000;
+  top: 4px;
+  left: 0;
+  height: 15px;
+  width: 15px;
+}
+
+
+.checkmark .fas {
+  position: absolute;
+  display: none;
+  font-size: 0.7rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.containerForInputs input:checked ~ .checkmark .fas {
+  display: block;
+  color: #fff;
+}
+
+
+
+
 @media (prefers-reduced-motion: reduce) {
   .btn {
     transition: none;

@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.paliloza.concessioneurope.entity.Order;
+import pl.paliloza.concessioneurope.entity.Processes;
 import pl.paliloza.concessioneurope.services.OrderService;
 import pl.paliloza.concessioneurope.services.ProcessService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @Scope("session")
@@ -28,16 +28,7 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String viewMainModel(Model model, HttpSession httpSession) {
-        List<String> messages = (List<String>) httpSession.getAttribute("orderSess");
-
-        if(messages == null) {
-            messages = new ArrayList<>();
-        }
-        model.addAttribute("sessionMessager", messages);
-        for (String message : messages) {
-            System.out.println(message + "dupa");
-        }
+    public String viewMainModel(Model model) {
         model.addAttribute("orders", orderService.getAllOrders());
         model.addAttribute("statuses", orderService.orderShow());
         model.addAttribute("processesList", orderService.processesShow());
@@ -46,24 +37,17 @@ public class MainController {
     }
 
     @PostMapping("/")
-
-    public String addNewOrder(Order order,@RequestParam String processName, HttpServletRequest request) {
-        List<String> messages = (List<String>) request.getSession().getAttribute("orderSess");
-        if(messages == null){
-            messages = new ArrayList<>();
-            request.getSession().setAttribute("sessionMessager",messages);
-        }
-        messages.add(processName);
-        request.getSession().setAttribute("sessionMessager",messages);
-
-        for (String message : messages) {
-            System.out.println(message);
+    public String addNewOrder(Order order,@RequestParam String orderListener) {
+        System.out.println(orderListener);
+        String[] split = orderListener.split(",");
+        List<Processes> newProcessList = new ArrayList<>();
+        for (String s : split) {
+            System.out.println(s);
+            Processes processByNa = processService.getProcessByName(s);
+            newProcessList.add(processByNa);
         }
 
-
-//        Prmeocesses processByNa = processService.getProcessByName(processName);
-//        Set<Processes> newProcessList = processService.getNewProcessList(processByName);
-        orderService.add(order);
+        orderService.add(order,newProcessList);
         return "redirect:/";
     }
 

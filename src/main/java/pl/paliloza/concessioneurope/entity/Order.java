@@ -2,6 +2,7 @@ package pl.paliloza.concessioneurope.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -18,14 +19,14 @@ public class Order {
     private String principal;
     @OneToOne
     private OrderStatus orderStatus;
-    @OneToMany
-    Set<Processes> processes;
+    @ManyToMany
+    private List<Processes> processes;
 
-    public Set<Processes> getProcesses() {
+    public List<Processes> getProcesses() {
         return processes;
     }
 
-    public void setProcesses(Set<Processes> processes) {
+    public void setProcesses(List<Processes> processes) {
         this.processes = processes;
     }
 

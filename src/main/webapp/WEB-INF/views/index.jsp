@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
             <jsp:include page="header.jsp"/>
 
@@ -27,7 +28,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Nowe zamówienie</h1>
                                     </div>
-                                    <form:form class="user" method="post" action="/" modelAttribute="order">
+                                    <form:form class="user" method="post" action="/" modelAttribute="order" id="form">
                                         <div class="form-group row">
                                             <div class="col-sm-3">
                                                 <input type="hidden" id="a" name="orderListener">
@@ -51,12 +52,17 @@
                                             <button type="submit" class="btn btn-lg btn-primary shadow-sm">Dodaj</button>
 
                                         </div>
-                                        <section class="container">
+                                        <section>
 
                                             <c:forEach items="${processesList}" var="processes" varStatus="counter">
+                                                <c:set var = "string2" value = "${fn:split(processes, ' ')}" />
+                                                <c:set var = "string3" value = "${fn:join(string2, '-')}" />
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" name="processName" value="${processes}" id="${processes}">
-                                                    <label class="form-check-label" for="${processes}">
+                                                    <label class="form-check-label containerForInputs" for="${processes}" id="${string3}">
+                                                    <input class="form-check-input" type="checkbox" name="processName" value="${processes}" />
+                                                        <span class="checkmark">
+                                                            <i class="fas fa-check"></i>
+                                                        </span>
                                                         ${processes}
                                                     </label>
                                                 </div>

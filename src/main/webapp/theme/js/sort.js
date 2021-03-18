@@ -1,6 +1,22 @@
 let order = [];
 let counter = 1;
 let result = document.getElementById('result');
+let form = document.getElementById('form');
+let hiddenInput = document.getElementById('a');
+
+// form.addEventListener("submit",ev => {
+//     ev.preventDefault();
+//     hiddenInput.setAttribute("value",order.toString());
+//     $(this).unbind('submit').submit()
+// })
+
+$('form').submit( function(ev) {
+    ev.preventDefault();
+    //later you decide you want to submit
+    hiddenInput.setAttribute("value",order.toString());
+    $(this).unbind('submit').submit();
+});
+
 $("[type=checkbox]").on('change', function() { // always use change event
     let idx = order.indexOf(this.value);
     if (idx !== -1) {// if already in array
