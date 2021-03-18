@@ -16,6 +16,7 @@ $("[type=checkbox]").on('change', function() { // always use change event
             th.classList.add("shadow-sm");
             th.classList.add("btn-sm");
             th.classList.add("ml-2");
+            th.setAttribute("id",this.value);
             th.innerText = order.indexOf(el) + 1 +" "+ el;
             result.appendChild(th);
         })
@@ -65,6 +66,7 @@ $("[type=checkbox]").on('change', function() { // always use change event
         th.classList.add("shadow-sm");
         th.classList.add("btn-sm");
         th.classList.add("ml-2");
+        th.setAttribute("id",this.value);
         th.innerText = order.indexOf(this.value) +1 +" "+ this.value;
         result.appendChild(th);
     }
