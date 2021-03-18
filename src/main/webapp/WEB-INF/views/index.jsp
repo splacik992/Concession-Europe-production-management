@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
             <jsp:include page="header.jsp"/>
 
@@ -26,25 +27,25 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Nowe zamówienie</h1>
                                     </div>
-                                    <form class="user">
+                                    <form:form class="user" method="post" action="/" modelAttribute="order">
                                         <div class="form-group row">
                                             <div class="col-sm-3">
-                                                <input type="text" class="form-control form-control-user" id="material"
-                                                       placeholder="Materiał">
+                                                <form:input path="materialName" type="text" class="form-control form-control-user" id="material"
+                                                       placeholder="Materiał"/>
                                             </div>
                                             <div class="col-sm-3">
-                                                <input type="text" class="form-control form-control-user"
+                                                <form:input path="productName" type="text" class="form-control form-control-user"
                                                        id="productName"
-                                                       placeholder="Nazwa produktu">
+                                                       placeholder="Nazwa produktu"/>
                                             </div>
                                             <div class="col-sm-3">
-                                                <input type="text" class="form-control form-control-user"
+                                                <form:input path="clientName" type="text" class="form-control form-control-user"
                                                        id="clientName"
-                                                       placeholder="Klient">
+                                                       placeholder="Klient"/>
                                             </div>
                                             <div class="col-sm-2">
-                                                <input type="number" class="form-control form-control-user"
-                                                       id="count" placeholder="Ilość">
+                                                <form:input path="count" type="number" class="form-control form-control-user"
+                                                       id="count" placeholder="Ilość"/>
                                             </div>
                                             <button type="submit" class="btn btn-lg btn-primary shadow-sm">Dodaj</button>
 
@@ -65,7 +66,7 @@
                                         <div id="result">
 
                                         </div>
-                                    </form>
+                                    </form:form>
                                     <hr>
 
                                 </div>
