@@ -18,16 +18,17 @@ public class MainController {
 
     @GetMapping("/")
     public String viewMainModel(Model model){
+        model.addAttribute("orders" , orderServices.getAllOrders());
         model.addAttribute("statuses",orderServices.orderShow());
         model.addAttribute("processesList",orderServices.processesShow());
         model.addAttribute("order", new Order());
         return "index";
     }
 
-    @PostMapping("/order")
+    @PostMapping("/")
     public String addNewOrder(Order order){
         orderServices.add(order);
-        return "index";
+        return "redirect:/";
     }
 
 }

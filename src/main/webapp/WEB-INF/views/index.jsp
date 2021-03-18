@@ -76,8 +76,10 @@
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Zamówienia</h6>
                             </div>
+
                             <div class="card-body">
                                 <div class="table-responsive">
+
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                         <tr>
@@ -93,14 +95,15 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <c:forEach items="${orders}" var="order">
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>4</td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>${order.id}</td>
+                                            <td>${order.materialName}</td>
+                                            <td>${order.productName}</td>
+                                            <td>${order.clientName}</td>
+                                            <td>${order.count}</td>
+                                            <td>${order.principal}</td>
+                                            <td>${order.date}</td>
                                             <td>
                                                 <select>
                                                     <c:forEach items="${statuses}" var="status">
@@ -110,28 +113,7 @@
                                             </td>
                                             <td></td>
                                         </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>4</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>wydane</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>5</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>wydane</td>
-                                            <td></td>
-                                        </tr>
+                                        </c:forEach>
 
                                         </tbody>
                                     </table>

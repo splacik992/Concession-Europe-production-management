@@ -1,5 +1,6 @@
 package pl.paliloza.concessioneurope.services;
 
+import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Service;
 import pl.paliloza.concessioneurope.dao.OrderDAO;
 import pl.paliloza.concessioneurope.dao.OrderStatusDAO;
@@ -8,6 +9,7 @@ import pl.paliloza.concessioneurope.entity.Order;
 import pl.paliloza.concessioneurope.entity.OrderStatus;
 import pl.paliloza.concessioneurope.entity.Processes;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +44,11 @@ public class OrderServices {
     }
 
     public void add(Order order) {
+        order.setDate(LocalDate.now());
         orderDAO.save(order);
+    }
+
+    public List<Order> getAllOrders(){
+        return orderDAO.findAll();
     }
 }
