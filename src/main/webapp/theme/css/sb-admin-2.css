@@ -2368,8 +2368,9 @@ fieldset:disabled a.btn {
 
 .btn-primary.disabled, .btn-primary:disabled {
   color: #fff;
-  background-color: #4e73df;
-  border-color: #4e73df;
+  background-color: #C12026;
+  border-color: #C12026;
+  opacity: 1;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
@@ -10861,6 +10862,9 @@ form.user .btn-user {
   font-size: 0.8rem;
   border-radius: 10rem;
   padding: 0.75rem 1rem;
+}
+button .unclick {
+  cursor: none;
 }
 
 .btn-google {
