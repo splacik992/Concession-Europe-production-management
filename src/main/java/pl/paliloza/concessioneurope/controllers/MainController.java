@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import pl.paliloza.concessioneurope.entity.Order;
 import pl.paliloza.concessioneurope.services.OrderServices;
 
 @Controller
@@ -18,12 +20,13 @@ public class MainController {
     public String viewMainModel(Model model){
         model.addAttribute("statuses",orderServices.orderShow());
         model.addAttribute("processesList",orderServices.processesShow());
+        model.addAttribute("order", new Order());
         return "index";
     }
 
-    @PostMapping("/addNewOrder")
-    public String addNewOrder(){
-
+    @PostMapping("/order")
+    public String addNewOrder(Order order){
+        orderServices.add(order);
         return "index";
     }
 
