@@ -2350,6 +2350,57 @@ textarea.form-control {
   background-color: #6495ed;
 }
 
+
+#CNC1 {
+  background-color: #ca2819;
+
+}
+#Okleiniarka1 {
+  background-color:  #006400;
+  border: none;
+}
+#Transport1 {
+  background-color: #000;
+  border: none;
+
+}
+#Montaż1 {
+  background-color:  #6f42c1;
+  border: none;
+
+}
+#Szlifiernia1 {
+  background-color:  #dda20a;
+  border: none;
+
+}
+#Lakiernia1 {
+  background-color: #f34f73;
+  border: none;
+
+}
+#Prasa1 {
+  background-color: gray;
+  border: none;
+
+}
+#Pakowanie1 {
+  background-color: #7cfc00;
+  border: none;
+
+}
+#Piła-panelowa1 {
+  background-color: #8f5c38;
+  border: none;
+
+}
+#Dział-drzewny1 {
+  background-color: #6495ed;
+  border: none;
+
+}
+
+
 .containerForInputs{
   display: block;
   position: relative;
