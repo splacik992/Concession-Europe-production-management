@@ -2350,6 +2350,10 @@ textarea.form-control {
   background-color: #6495ed;
 }
 
+.actualState{
+  padding: 5px 10px;
+  color: #fff;
+}
 
 #CNC1 {
   background-color: #ca2819;
@@ -2400,6 +2404,15 @@ textarea.form-control {
 
 }
 
+.processOrder{
+  width: 20px;
+  height: 20px;
+  margin-right: 3px;
+  display: block;
+}
+.tableRow{
+  line-height: 30px;
+}
 
 .containerForInputs{
   display: block;
@@ -4800,6 +4813,7 @@ input[type="button"].btn-block {
 .accordion > .card {
   overflow: hidden;
 }
+
 
 .accordion > .card:not(:last-of-type) {
   border-bottom: 0;
@@ -10490,7 +10504,7 @@ a:focus {
   white-space: nowrap;
 }
 thead{
-  background: #C12026;
+  background: #c12026;
   color: #ffffff;
 }
 

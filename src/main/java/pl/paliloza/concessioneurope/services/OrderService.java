@@ -42,6 +42,8 @@ public class OrderService {
     }
 
     public void add(Order order, List<Processes> newProcessList) {
+        OrderStatus orderStatus = orderStatusDAO.findByName("W trakcie");
+        order.setOrderStatus(orderStatus);
         order.setProcesses(newProcessList);
         order.setDate(LocalDate.now());
         orderDAO.save(order);
@@ -50,6 +52,5 @@ public class OrderService {
     public List<Order> getAllOrders(){
         return orderDAO.findAll();
     }
-
 
 }

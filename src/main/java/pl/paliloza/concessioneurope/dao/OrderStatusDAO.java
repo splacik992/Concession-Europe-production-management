@@ -11,4 +11,5 @@ import java.util.List;
 public interface OrderStatusDAO extends JpaRepository<OrderStatus,Long> {
     @Query(value ="select * from order_status" ,nativeQuery = true)
     List<OrderStatus> findAll();
+    OrderStatus findByName(String name);
 }
