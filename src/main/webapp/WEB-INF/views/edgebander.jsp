@@ -107,26 +107,26 @@
                             </tr>
                             </thead>
                             <tbody id="sawDay">
-                            <c:forEach items="${sawOrdersPerDay}" var="sawOrder">
+                            <c:forEach items="${edgebanderOrdersPerDay}" var="edgebanderOrder">
 
                                 <tr class="tableRowDay">
-                                    <td>${sawOrder.id}</td>
-                                    <td>${sawOrder.materialName}</td>
-                                    <td>${sawOrder.productName}</td>
-                                    <td>${sawOrder.clientName}</td>
-                                    <td>${sawOrder.count}</td>
-                                    <td>${sawOrder.principal}</td>
-                                    <td>${sawOrder.date}</td>
+                                    <td>${edgebanderOrder.id}</td>
+                                    <td>${edgebanderOrder.materialName}</td>
+                                    <td>${edgebanderOrder.productName}</td>
+                                    <td>${edgebanderOrder.clientName}</td>
+                                    <td>${edgebanderOrder.count}</td>
+                                    <td>${edgebanderOrder.principal}</td>
+                                    <td>${edgebanderOrder.date}</td>
 
-                                    <td>${sawOrder.orderStatus.name}</td>
-                                    <c:set var="string6" value="${fn:split(sawOrder.processes.get(0).name, ' ')}"/>
+                                    <td>${edgebanderOrder.orderStatus.name}</td>
+                                    <c:set var="string6" value="${fn:split(edgebanderOrder.processes.get(0).name, ' ')}"/>
                                     <c:set var="string7" value="${fn:join(string6, '-')}1"/>
                                     <td>
-                                        <div class="actualState" id="${string7}">${sawOrder.processes.get(0).name}</div>
+                                        <div class="actualState" id="${string7}">${edgebanderOrder.processes.get(0).name}</div>
                                     </td>
                                     <td class="tableRow">
                                         <div class="d-flex">
-                                            <c:forEach items="${sawOrder.processes}" var="process">
+                                            <c:forEach items="${edgebanderOrder.processes}" var="process">
                                                 <c:set var="string4" value="${fn:split(process.name, ' ')}"/>
                                                 <c:set var="string5" value="${fn:join(string4, '-')}1"/>
                                                 <span class="processOrder" id="${string5}"></span>
@@ -135,8 +135,8 @@
                                     </td>
                                     <td>
                                         <form action="/pilaRemove" method="post">
-                                            <input name="id" type="hidden" value="${sawOrder.id}">
-                                            <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit" value="${sawOrder.id}">Usuń</button>
+                                            <input name="id" type="hidden" value="${edgebanderOrder.id}">
+                                            <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit" value="${edgebanderOrder.id}">Usuń</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -174,26 +174,26 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${sawOrders}" var="sawOrder">
+                            <c:forEach items="${edgebanderOrders}" var="edgebanderOrder">
 
                                 <tr class="tableRow">
-                                    <td>${sawOrder.id}</td>
-                                    <td>${sawOrder.materialName}</td>
-                                    <td>${sawOrder.productName}</td>
-                                    <td>${sawOrder.clientName}</td>
-                                    <td>${sawOrder.count}</td>
-                                    <td>${sawOrder.principal}</td>
-                                    <td>${sawOrder.date}</td>
+                                    <td>${edgebanderOrder.id}</td>
+                                    <td>${edgebanderOrder.materialName}</td>
+                                    <td>${edgebanderOrder.productName}</td>
+                                    <td>${edgebanderOrder.clientName}</td>
+                                    <td>${edgebanderOrder.count}</td>
+                                    <td>${edgebanderOrder.principal}</td>
+                                    <td>${edgebanderOrder.date}</td>
 
-                                    <td>${sawOrder.orderStatus.name}</td>
-                                    <c:set var="string6" value="${fn:split(sawOrder.processes.get(0).name, ' ')}"/>
+                                    <td>${edgebanderOrder.orderStatus.name}</td>
+                                    <c:set var="string6" value="${fn:split(edgebanderOrder.processes.get(0).name, ' ')}"/>
                                     <c:set var="string7" value="${fn:join(string6, '-')}1"/>
                                     <td>
-                                        <div class="actualState" id="${string7}">${sawOrder.processes.get(0).name}</div>
+                                        <div class="actualState" id="${string7}">${edgebanderOrder.processes.get(0).name}</div>
                                     </td>
                                     <td class="tableRow">
                                         <div class="d-flex">
-                                            <c:forEach items="${sawOrder.processes}" var="process">
+                                            <c:forEach items="${edgebanderOrder.processes}" var="process">
                                                 <c:set var="string4" value="${fn:split(process.name, ' ')}"/>
                                                 <c:set var="string5" value="${fn:join(string4, '-')}1"/>
                                                 <span class="processOrder" id="${string5}"></span>
@@ -202,8 +202,8 @@
                                     </td>
                                     <td>
                                         <form action="/pilaAdd" method="post">
-                                            <input name="id" type="hidden" value="${sawOrder.id}">
-                                            <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit" value="${sawOrder.id}">Dodaj</button>
+                                            <input name="id" type="hidden" value="${edgebanderOrder.id}">
+                                            <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit" value="${edgebanderOrder.id}">Dodaj</button>
                                         </form>
                                     </td>
                                 </tr>

@@ -72,5 +72,18 @@ public class MainController {
         return "redirect:/";
     }
 
+    @GetMapping("/okleiniarka")
+    public String viewEdgebander(Model model) {
+        model.addAttribute("edgebanderOrdersPerDay",planOfTheDayService.showAllPlansByName("Okleiniarka"));
+        model.addAttribute("edgebanderOrders",orderService.getAllOrdersByName("Okleiniarka"));
+        model.addAttribute("orders", orderService.getAllOrders());
+        model.addAttribute("statuses", orderService.orderShow());
+        model.addAttribute("processesList", orderService.processesShow());
+        model.addAttribute("order", new Order());
+        return "edgebander";
+    }
+
+
+
 }
 
