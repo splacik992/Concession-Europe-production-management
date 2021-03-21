@@ -10,7 +10,7 @@ let hiddenInput = document.getElementById('a');
 //     $(this).unbind('submit').submit()
 // })
 
-$('form').submit( function(ev) {
+$('.user').submit( function(ev) {
     ev.preventDefault();
     //later you decide you want to submit
     hiddenInput.setAttribute("value",order.toString());

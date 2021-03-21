@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.paliloza.concessioneurope.entity.Order;
 import pl.paliloza.concessioneurope.entity.Processes;
 import pl.paliloza.concessioneurope.services.OrderService;
+import pl.paliloza.concessioneurope.services.PlanOfTheDayService;
 import pl.paliloza.concessioneurope.services.ProcessService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @Controller
@@ -20,11 +19,13 @@ import java.util.*;
 public class MainController {
     private final OrderService orderService;
     private final ProcessService processService;
+    private final PlanOfTheDayService planOfTheDayService;
 
 
-    public MainController(OrderService orderService, ProcessService processService) {
+    public MainController(OrderService orderService, ProcessService processService, PlanOfTheDayService planOfTheDayService) {
         this.orderService = orderService;
         this.processService = processService;
+        this.planOfTheDayService = planOfTheDayService;
     }
 
     @GetMapping("/")
@@ -38,6 +39,7 @@ public class MainController {
 
     @GetMapping("/pila")
     public String viewSawPage(Model model) {
+        model.addAttribute("sawOrdersPerDay",planOfTheDayService.showAllPlansByName("Piła panelowa"));
         model.addAttribute("sawOrders",orderService.getAllOrdersByName("Piła panelowa"));
         model.addAttribute("orders", orderService.getAllOrders());
         model.addAttribute("statuses", orderService.orderShow());
@@ -45,18 +47,18 @@ public class MainController {
         model.addAttribute("order", new Order());
         return "panelSaw";
     }
-    @PostMapping("/post")
+    @PostMapping("/pila")
     public String viewSawPagePost(@RequestParam String id){
+        System.out.println(id);
+        planOfTheDayService.addToTheList(id,"Piła panelowa");
         return "redirect:/pila";
     }
 
     @PostMapping("/")
     public String addNewOrder(Order order,@RequestParam String orderListener) {
-        System.out.println(orderListener);
         String[] split = orderListener.split(",");
         List<Processes> newProcessList = new ArrayList<>();
         for (String s : split) {
-            System.out.println(s);
             Processes processByNa = processService.getProcessByName(s);
             newProcessList.add(processByNa);
         }
