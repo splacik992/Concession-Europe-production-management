@@ -36,6 +36,15 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/pila")
+    public String viewSawPage(Model model) {
+        model.addAttribute("orders", orderService.getAllOrders());
+        model.addAttribute("statuses", orderService.orderShow());
+        model.addAttribute("processesList", orderService.processesShow());
+        model.addAttribute("order", new Order());
+        return "panelSaw";
+    }
+
     @PostMapping("/")
     public String addNewOrder(Order order,@RequestParam String orderListener) {
         System.out.println(orderListener);
