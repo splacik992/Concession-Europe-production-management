@@ -2317,6 +2317,9 @@ textarea.form-control {
   border-radius: 0.35rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+#addToDay{
+  margin-left: 25px;
+}
 
 #CNC span{
   background-color: #ca2819;

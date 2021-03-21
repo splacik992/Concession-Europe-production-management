@@ -16,72 +16,135 @@
 
     <!-- Content Row -->
     <div class="row">
-        <div class="container-fluid">
+        <div class="container-fluid sawPanel">
 
             <!-- Page Heading -->
 
 
             <!-- DataTales Example -->
-            <div class="row d-flex justify-content-center d-none">
-                <div class="col-lg-12 d-flex justify-content-center">
-                    <div class="p-3 w-100">
-                        <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Nowe zamówienie</h1>
-                        </div>
-                        <form:form class="user" method="post" action="/" modelAttribute="order" id="form">
-                            <div class="form-group row">
-                                <div class="col-sm-3">
-                                    <input type="hidden" id="a" name="orderListener">
-                                    <form:input path="materialName" type="text" class="form-control form-control-user"
-                                                id="material"
-                                                placeholder="Materiał"/>
-                                </div>
-                                <div class="col-sm-3">
-                                    <form:input path="productName" type="text" class="form-control form-control-user"
-                                                id="productName"
-                                                placeholder="Nazwa produktu"/>
-                                </div>
-                                <div class="col-sm-3">
-                                    <form:input path="clientName" type="text" class="form-control form-control-user"
-                                                id="clientName"
-                                                placeholder="Klient"/>
-                                </div>
-                                <div class="col-sm-2">
-                                    <form:input path="count" type="number" class="form-control form-control-user"
-                                                id="count" placeholder="Ilość"/>
-                                </div>
-                                <button type="submit" class="btn btn-lg btn-primary shadow-sm">Dodaj</button>
+            <%--            <div class="row d-flex justify-content-center d-none">--%>
+            <%--                <div class="col-lg-12 d-flex justify-content-center">--%>
+            <%--                    <div class="p-3 w-100">--%>
+            <%--                        <div class="text-center">--%>
+            <%--                            <h1 class="h4 text-gray-900 mb-4">Nowe zamówienie</h1>--%>
+            <%--                        </div>--%>
+            <%--                        <form:form class="user" method="post" action="/" modelAttribute="order" id="form">--%>
+            <%--                            <div class="form-group row">--%>
+            <%--                                <div class="col-sm-3">--%>
+            <%--                                    <input type="hidden" id="a" name="orderListener">--%>
+            <%--                                    <form:input path="materialName" type="text" class="form-control form-control-user"--%>
+            <%--                                                id="material"--%>
+            <%--                                                placeholder="Materiał"/>--%>
+            <%--                                </div>--%>
+            <%--                                <div class="col-sm-3">--%>
+            <%--                                    <form:input path="productName" type="text" class="form-control form-control-user"--%>
+            <%--                                                id="productName"--%>
+            <%--                                                placeholder="Nazwa produktu"/>--%>
+            <%--                                </div>--%>
+            <%--                                <div class="col-sm-3">--%>
+            <%--                                    <form:input path="clientName" type="text" class="form-control form-control-user"--%>
+            <%--                                                id="clientName"--%>
+            <%--                                                placeholder="Klient"/>--%>
+            <%--                                </div>--%>
+            <%--                                <div class="col-sm-2">--%>
+            <%--                                    <form:input path="count" type="number" class="form-control form-control-user"--%>
+            <%--                                                id="count" placeholder="Ilość"/>--%>
+            <%--                                </div>--%>
+            <%--                                <button type="submit" class="btn btn-lg btn-primary shadow-sm">Dodaj</button>--%>
 
-                            </div>
-                            <section>
+            <%--                            </div>--%>
+            <%--                            <section>--%>
 
-                                <c:forEach items="${processesList}" var="processes" varStatus="counter">
-                                    <c:set var="string2" value="${fn:split(processes, ' ')}"/>
-                                    <c:set var="string3" value="${fn:join(string2, '-')}"/>
-                                    <div class="form-check form-check-inline">
-                                        <label class="form-check-label containerForInputs" for="${processes}"
-                                               id="${string3}">
-                                            <input class="form-check-input" type="checkbox" name="processName"
-                                                   value="${processes}"/>
-                                            <span class="checkmark">
-                                                            <i class="fas fa-check"></i>
-                                                        </span>
-                                                ${processes}
-                                        </label>
-                                    </div>
-                                </c:forEach>
-                            </section>
-                            <p>Kolejność:</p>
+            <%--                                <c:forEach items="${processesList}" var="processes" varStatus="counter">--%>
+            <%--                                    <c:set var="string2" value="${fn:split(processes, ' ')}"/>--%>
+            <%--                                    <c:set var="string3" value="${fn:join(string2, '-')}"/>--%>
+            <%--                                    <div class="form-check form-check-inline">--%>
+            <%--                                        <label class="form-check-label containerForInputs" for="${processes}"--%>
+            <%--                                               id="${string3}">--%>
+            <%--                                            <input class="form-check-input" type="checkbox" name="processName"--%>
+            <%--                                                   value="${processes}"/>--%>
+            <%--                                            <span class="checkmark">--%>
+            <%--                                                            <i class="fas fa-check"></i>--%>
+            <%--                                                        </span>--%>
+            <%--                                                ${processes}--%>
+            <%--                                        </label>--%>
+            <%--                                    </div>--%>
+            <%--                                </c:forEach>--%>
+            <%--                            </section>--%>
+            <%--                            <p>Kolejność:</p>--%>
 
-                            <div id="result">
+            <%--                            <div id="result">--%>
 
-                            </div>
-                        </form:form>
-                        <hr>
+            <%--                            </div>--%>
+            <%--                        </form:form>--%>
+            <%--                        <hr>--%>
 
+            <%--                    </div>--%>
+            <%--                </div>--%>
+            <%--            </div>--%>
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Plan na dziś:</h6>
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>Numer</th>
+                                <th>Materiał</th>
+                                <th>Nazwa produktu</th>
+                                <th>Klient</th>
+                                <th>Ilość</th>
+                                <th>Zleceniodawca</th>
+                                <th>Data</th>
+                                <th>Status zamówienia</th>
+                                <th>Aktualny etap</th>
+                                <th>Kolejka</th>
+                            </tr>
+                            </thead>
+                            <tbody id="sawDay">
+                            <c:forEach items="${sawOrders}" var="sawOrder">
+
+                                <tr class="tableRowDay d-none">
+                                    <td>${sawOrder.id}</td>
+                                    <td>${sawOrder.materialName}</td>
+                                    <td>${sawOrder.productName}</td>
+                                    <td>${sawOrder.clientName}</td>
+                                    <td>${sawOrder.count}</td>
+                                    <td>${sawOrder.principal}</td>
+                                    <td>${sawOrder.date}</td>
+
+                                    <td>${sawOrder.orderStatus.name}</td>
+                                    <c:set var="string6" value="${fn:split(sawOrder.processes.get(0).name, ' ')}"/>
+                                    <c:set var="string7" value="${fn:join(string6, '-')}1"/>
+                                    <td>
+                                        <div class="actualState" id="${string7}">${sawOrder.processes.get(0).name}</div>
+                                    </td>
+                                    <td class="tableRow">
+                                        <div class="d-flex">
+                                            <c:forEach items="${sawOrder.processes}" var="process">
+                                                <c:set var="string4" value="${fn:split(process.name, ' ')}"/>
+                                                <c:set var="string5" value="${fn:join(string4, '-')}1"/>
+                                                <span class="processOrder" id="${string5}"></span>
+                                            </c:forEach>
+                                        </div>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                            </c:forEach>
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
+
+
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Zamówienia</h6>
@@ -103,33 +166,41 @@
                                 <th>Status zamówienia</th>
                                 <th>Aktualny etap</th>
                                 <th>Kolejka</th>
+                                <th>Dodaj na dziś</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${orders}" var="order">
-                                <tr class="tableRow">
-                                    <td>${order.id}</td>
-                                    <td>${order.materialName}</td>
-                                    <td>${order.productName}</td>
-                                    <td>${order.clientName}</td>
-                                    <td>${order.count}</td>
-                                    <td>${order.principal}</td>
-                                    <td>${order.date}</td>
+                            <c:forEach items="${sawOrders}" var="sawOrder">
 
-                                    <td>${order.orderStatus.name}</td>
-                                    <c:set var="string6" value="${fn:split(order.processes.get(0).name, ' ')}"/>
+                                <tr class="tableRow">
+                                    <td>${sawOrder.id}</td>
+                                    <td>${sawOrder.materialName}</td>
+                                    <td>${sawOrder.productName}</td>
+                                    <td>${sawOrder.clientName}</td>
+                                    <td>${sawOrder.count}</td>
+                                    <td>${sawOrder.principal}</td>
+                                    <td>${sawOrder.date}</td>
+
+                                    <td>${sawOrder.orderStatus.name}</td>
+                                    <c:set var="string6" value="${fn:split(sawOrder.processes.get(0).name, ' ')}"/>
                                     <c:set var="string7" value="${fn:join(string6, '-')}1"/>
                                     <td>
-                                        <div class="actualState" id="${string7}">${order.processes.get(0).name}</div>
+                                        <div class="actualState" id="${string7}">${sawOrder.processes.get(0).name}</div>
                                     </td>
                                     <td class="tableRow">
                                         <div class="d-flex">
-                                            <c:forEach items="${order.processes}" var="process">
+                                            <c:forEach items="${sawOrder.processes}" var="process">
                                                 <c:set var="string4" value="${fn:split(process.name, ' ')}"/>
                                                 <c:set var="string5" value="${fn:join(string4, '-')}1"/>
                                                 <span class="processOrder" id="${string5}"></span>
                                             </c:forEach>
                                         </div>
+                                    </td>
+                                    <td>
+                                        <form action="/post" method="post">
+                                            <input name="id" type="hidden" value="${sawOrder.id}">
+                                            <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit" value="${sawOrder.id}">Dodaj</button>
+                                        </form>
                                     </td>
                                 </tr>
                             </c:forEach>

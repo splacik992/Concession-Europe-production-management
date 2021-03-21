@@ -38,11 +38,16 @@ public class MainController {
 
     @GetMapping("/pila")
     public String viewSawPage(Model model) {
+        model.addAttribute("sawOrders",orderService.getAllOrdersByName("Piła panelowa"));
         model.addAttribute("orders", orderService.getAllOrders());
         model.addAttribute("statuses", orderService.orderShow());
         model.addAttribute("processesList", orderService.processesShow());
         model.addAttribute("order", new Order());
         return "panelSaw";
+    }
+    @PostMapping("/post")
+    public String viewSawPagePost(@RequestParam String id){
+        return "redirect:/pila";
     }
 
     @PostMapping("/")

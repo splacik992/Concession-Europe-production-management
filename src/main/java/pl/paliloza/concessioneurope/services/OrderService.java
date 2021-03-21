@@ -53,4 +53,15 @@ public class OrderService {
         return orderDAO.findAll();
     }
 
+    public Object getAllOrdersByName(String name) {
+        Processes byName = processesDAO.findByName(name);
+        List<Order> allOrders = orderDAO.findAll();
+        List<Order> ordersByName  = new ArrayList<>();
+        for (Order allOrder : allOrders) {
+            if(allOrder.getProcesses().get(0).getName().equals(name)){
+                ordersByName.add(allOrder);
+            }
+        }
+        return ordersByName;
+    }
 }
