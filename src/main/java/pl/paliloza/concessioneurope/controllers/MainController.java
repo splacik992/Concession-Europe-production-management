@@ -83,6 +83,18 @@ public class MainController {
         return "edgebander";
     }
 
+    @PostMapping("/edgebanderAdd")
+    public String edgebanderAdd(@RequestParam String id){
+        planOfTheDayService.addToTheList(id,"Okleiniarka");
+        return "redirect:/okleiniarka";
+    }
+
+    @PostMapping("/edgabanderRemove")
+    public String edgebanderRemove(@RequestParam String id){
+        planOfTheDayService.removeFromTheList(id,"Okleiniarka");
+        return "redirect:/okleiniarka";
+    }
+
 
 
 }

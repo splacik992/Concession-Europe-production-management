@@ -134,7 +134,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="/pilaRemove" method="post">
+                                        <form action="/edgabanderRemove" method="post">
                                             <input name="id" type="hidden" value="${edgebanderOrder.id}">
                                             <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit" value="${edgebanderOrder.id}">Usuń</button>
                                         </form>
@@ -201,7 +201,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="/pilaAdd" method="post">
+                                        <form action="/edgebanderAdd" method="post">
                                             <input name="id" type="hidden" value="${edgebanderOrder.id}">
                                             <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit" value="${edgebanderOrder.id}">Dodaj</button>
                                         </form>
