@@ -103,6 +103,7 @@
                                 <th>Status zamówienia</th>
                                 <th>Aktualny etap</th>
                                 <th>Kolejka</th>
+                                <th>Usuń z planu</th>
                             </tr>
                             </thead>
                             <tbody id="sawDay">
@@ -131,6 +132,12 @@
                                                 <span class="processOrder" id="${string5}"></span>
                                             </c:forEach>
                                         </div>
+                                    </td>
+                                    <td>
+                                        <form action="/pilaRemove" method="post">
+                                            <input name="id" type="hidden" value="${sawOrder.id}">
+                                            <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit" value="${sawOrder.id}">Usuń</button>
+                                        </form>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -194,7 +201,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="/pila" method="post">
+                                        <form action="/pilaAdd" method="post">
                                             <input name="id" type="hidden" value="${sawOrder.id}">
                                             <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit" value="${sawOrder.id}">Dodaj</button>
                                         </form>

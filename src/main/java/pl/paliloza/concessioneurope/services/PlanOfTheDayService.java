@@ -51,4 +51,14 @@ public class PlanOfTheDayService {
         planOfTheDay.setOrderList(orderList);
         planOfTheDayDAO.save(planOfTheDay);
     }
+
+    public void removeFromTheList(String id, String name) {
+        PlanOfTheDay planOfTheDay;
+        planOfTheDay = planOfTheDayDAO.findByNameOfProcess(name);
+        Order order = orderDAO.findById(Long.valueOf(id)).get();
+        List<Order> orderList = planOfTheDay.getOrderList();
+        orderList.remove(order);
+        planOfTheDay.setOrderList(orderList);
+        planOfTheDayDAO.save(planOfTheDay);
+    }
 }

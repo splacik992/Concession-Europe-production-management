@@ -47,10 +47,15 @@ public class MainController {
         model.addAttribute("order", new Order());
         return "panelSaw";
     }
-    @PostMapping("/pila")
-    public String viewSawPagePost(@RequestParam String id){
-        System.out.println(id);
+    @PostMapping("/pilaAdd")
+    public String sawPagePostAdd(@RequestParam String id){
         planOfTheDayService.addToTheList(id,"Piła panelowa");
+        return "redirect:/pila";
+    }
+
+    @PostMapping("/pilaRemove")
+    public String sawPagePostRemove(@RequestParam String id){
+        planOfTheDayService.removeFromTheList(id,"Piła panelowa");
         return "redirect:/pila";
     }
 

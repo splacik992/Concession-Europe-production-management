@@ -67,6 +67,12 @@ $("[type=checkbox]").on('change', function() { // always use change event
 
     // <------------------------------------For demonstration
 
-
-
 });
+
+let buttonsAddToDayPlan = document.querySelectorAll('.addToDay');
+
+buttonsAddToDayPlan.forEach(el=>{
+    el.addEventListener('submit',e=>{
+        el.disabled = true;
+    })
+})
