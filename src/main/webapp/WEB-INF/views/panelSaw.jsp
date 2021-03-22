@@ -104,6 +104,7 @@
                                 <th>Aktualny etap</th>
                                 <th>Kolejka</th>
                                 <th>Usuń z planu</th>
+                                <th>Kolejny proces</th>
                             </tr>
                             </thead>
                             <tbody id="sawDay">
@@ -138,6 +139,20 @@
                                             <input name="id" type="hidden" value="${sawOrder.id}">
                                             <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit" value="${sawOrder.id}">Usuń</button>
                                         </form>
+                                    </td>
+                                    <td>
+                                        <form action="/pilaSelect" method="post">
+                                            <input type="hidden" value="${sawOrder.id}">
+                                        <select name="nextStep">
+                                            <c:forEach items="${sawOrder.processes}" var="process" begin="1">
+                                                <option value="${process.name}">${process.name}</option>
+                                            </c:forEach>
+                                        </select>
+
+                                            <input name="id" type="hidden" value="${sawOrder.id}">
+                                            <button class="btn btn-sm btn-primary shadow-sm goToNextProcessButton" type="submit" value="${sawOrder.id}">Prześlij dalej</button>
+                                        </form>
+
                                     </td>
                                 </tr>
                             </c:forEach>

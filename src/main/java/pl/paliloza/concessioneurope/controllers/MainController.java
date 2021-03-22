@@ -27,7 +27,7 @@ public class MainController {
         this.processService = processService;
         this.planOfTheDayService = planOfTheDayService;
     }
-
+    //PANEL GŁÓWNY ==================================================================
     @GetMapping("/")
     public String viewMainModel(Model model) {
         model.addAttribute("orders", orderService.getAllOrders());
@@ -36,7 +36,22 @@ public class MainController {
         model.addAttribute("order", new Order());
         return "index";
     }
+    @PostMapping("/")
+    public String addNewOrder(Order order,@RequestParam String orderListener) {
+        String[] split = orderListener.split(",");
+        List<Processes> newProcessList = new ArrayList<>();
+        for (String s : split) {
+            Processes processByNa = processService.getProcessByName(s);
+            newProcessList.add(processByNa);
+        }
 
+        orderService.add(order,newProcessList);
+        return "redirect:/";
+    }
+    //========================================================================
+
+
+    // PIŁA PANELOWA ======================================================
     @GetMapping("/pila")
     public String viewSawPage(Model model) {
         model.addAttribute("sawOrdersPerDay",planOfTheDayService.showAllPlansByName("Piła panelowa"));
@@ -59,19 +74,15 @@ public class MainController {
         return "redirect:/pila";
     }
 
-    @PostMapping("/")
-    public String addNewOrder(Order order,@RequestParam String orderListener) {
-        String[] split = orderListener.split(",");
-        List<Processes> newProcessList = new ArrayList<>();
-        for (String s : split) {
-            Processes processByNa = processService.getProcessByName(s);
-            newProcessList.add(processByNa);
-        }
-
-        orderService.add(order,newProcessList);
-        return "redirect:/";
+    @PostMapping("/pilaSelect")
+    public String sawPagePostSelect(@RequestParam String nextStep, @RequestParam String id){
+        orderService.goToAnotherStep(nextStep,id);
+        planOfTheDayService.removeFromTheList(id,"Piła panelowa");
+        return "redirect:/pila";
     }
+    // ===================================================================================
 
+    //OKLEINIARKA ====================================================================================
     @GetMapping("/okleiniarka")
     public String viewEdgebander(Model model) {
         model.addAttribute("edgebanderOrdersPerDay",planOfTheDayService.showAllPlansByName("Okleiniarka"));
@@ -94,6 +105,8 @@ public class MainController {
         planOfTheDayService.removeFromTheList(id,"Okleiniarka");
         return "redirect:/okleiniarka";
     }
+
+    // ===================================================================================
 
 
 

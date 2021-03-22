@@ -23,7 +23,7 @@ public class OrderService {
         this.orderDAO = orderDAO;
     }
 
-    public List<String> orderShow(){
+    public List<String> orderShow() {
         List<OrderStatus> orderStatuses = orderStatusDAO.findAll();
         List<String> statuses = new ArrayList<>();
         for (OrderStatus orderStatus : orderStatuses) {
@@ -32,7 +32,7 @@ public class OrderService {
         return statuses;
     }
 
-    public List<String> processesShow(){
+    public List<String> processesShow() {
         List<Processes> processes = processesDAO.findAll();
         List<String> processesList = new ArrayList<>();
         for (Processes process : processes) {
@@ -49,19 +49,30 @@ public class OrderService {
         orderDAO.save(order);
     }
 
-    public List<Order> getAllOrders(){
+    public List<Order> getAllOrders() {
         return orderDAO.findAll();
     }
 
     public Object getAllOrdersByName(String name) {
         Processes byName = processesDAO.findByName(name);
         List<Order> allOrders = orderDAO.findAll();
-        List<Order> ordersByName  = new ArrayList<>();
+        List<Order> ordersByName = new ArrayList<>();
         for (Order allOrder : allOrders) {
-            if(allOrder.getProcesses().get(0).getName().equals(name)){
+            if (allOrder.getProcesses().get(0).getName().equals(name)) {
                 ordersByName.add(allOrder);
             }
         }
         return ordersByName;
+    }
+
+    public void goToAnotherStep(String nextStep, String id) {
+        Order byId = orderDAO.findById(Long.valueOf(id)).get();
+        List<Processes> processes = byId.getProcesses();
+        int index = processes.indexOf(processesDAO.findByName(nextStep));
+        List<Processes> processesListAfterChange = new ArrayList<>(processes.subList(index, processes.size()));
+        processes.add(processesDAO.findByName(nextStep));
+        Collections.reverse(processesListAfterChange);
+        byId.setProcesses(processesListAfterChange);
+        orderDAO.save(byId);
     }
 }
