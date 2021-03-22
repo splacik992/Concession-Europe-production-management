@@ -100,8 +100,15 @@ public class MainController {
         return "redirect:/okleiniarka";
     }
 
-    @PostMapping("/edgabanderRemove")
+    @PostMapping("/edgebanderRemove")
     public String edgebanderRemove(@RequestParam String id){
+        planOfTheDayService.removeFromTheList(id,"Okleiniarka");
+        return "redirect:/okleiniarka";
+    }
+
+    @PostMapping("/edgebanderSelect")
+    public String edgebanderSelect(@RequestParam String nextStep, @RequestParam String id){
+        orderService.goToAnotherStep(nextStep,id);
         planOfTheDayService.removeFromTheList(id,"Okleiniarka");
         return "redirect:/okleiniarka";
     }

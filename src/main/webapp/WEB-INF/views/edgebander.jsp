@@ -104,6 +104,7 @@
                                 <th>Aktualny etap</th>
                                 <th>Kolejka</th>
                                 <th>Usuń z planu</th>
+                                <th>Kolejny proces</th>
                             </tr>
                             </thead>
                             <tbody id="sawDay">
@@ -134,10 +135,24 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="/edgabanderRemove" method="post">
+                                        <form action="/edgebanderRemove" method="post">
                                             <input name="id" type="hidden" value="${edgebanderOrder.id}">
                                             <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit" value="${edgebanderOrder.id}">Usuń</button>
                                         </form>
+                                    </td>
+                                    <td>
+                                        <form action="/edgebanderSelect" method="post">
+                                            <input type="hidden" value="${edgebanderOrder.id}">
+                                            <select name="nextStep">
+                                                <c:forEach items="${edgebanderOrder.processes}" var="process" begin="1">
+                                                    <option value="${process.name}">${process.name}</option>
+                                                </c:forEach>
+                                            </select>
+
+                                            <input name="id" type="hidden" value="${edgebanderOrder.id}">
+                                            <button class="btn btn-sm btn-primary shadow-sm goToNextProcessButton" type="submit" value="${edgebanderOrder.id}">Prześlij dalej</button>
+                                        </form>
+
                                     </td>
                                 </tr>
                             </c:forEach>
