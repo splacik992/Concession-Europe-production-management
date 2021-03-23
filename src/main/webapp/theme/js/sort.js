@@ -69,4 +69,22 @@ $("[type=checkbox]").on('change', function() { // always use change event
 
 });
 
+let closeButton = document.querySelector(".closeButton");
+let uwagiBtn = document.querySelector(".uwagiBtn");
+let popDivToHide = document.querySelector(".popDivToHide");
+let goToNextProcessButton = document.querySelector('.goToNextProcessButton');
+let select = document.querySelector('.nextStepSelect');
+closeButton.addEventListener('click',e=>{
+    popDivToHide.classList.add('d-none');
+})
 
+uwagiBtn.addEventListener('click',e=>{
+    popDivToHide.classList.add('d-none');
+})
+
+goToNextProcessButton.addEventListener('click',e=>{
+    e.preventDefault();
+    if(select.value === 'Zgłoś uwagi'){
+       popDivToHide.classList.remove('d-none');
+    }
+})

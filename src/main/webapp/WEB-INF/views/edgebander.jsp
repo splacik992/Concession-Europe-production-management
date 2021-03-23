@@ -147,6 +147,7 @@
                                                 <c:forEach items="${edgebanderOrder.processes}" var="process" begin="1">
                                                     <option value="${process.name}">${process.name}</option>
                                                 </c:forEach>
+                                                <option value="Zgłoś Uwagi">Zgłoś uwagi</option>
                                             </select>
 
                                             <input name="id" type="hidden" value="${edgebanderOrder.id}">
