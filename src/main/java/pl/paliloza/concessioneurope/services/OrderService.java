@@ -79,4 +79,10 @@ public class OrderService {
             orderDAO.save(byId);
         }
     }
+
+    public List<Order> listAll(){
+        return orderDAO.findAll(Sort.by("date").ascending());
+    }
+
+
 }
