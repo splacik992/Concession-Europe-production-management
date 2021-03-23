@@ -51,7 +51,7 @@ public class OrderService {
     }
 
     public List<Order> getAllOrders() {
-        return orderDAO.findAll();
+        return orderDAO.findAllDesc();
     }
 
     public Object getAllOrdersByName(String name) {
@@ -63,18 +63,21 @@ public class OrderService {
                 ordersByName.add(allOrder);
             }
         }
+        Collections.reverse(ordersByName);
         return ordersByName;
     }
 
     public void goToAnotherStep(String nextStep, String id) {
-        Order byId = orderDAO.findById(Long.valueOf(id)).get();
-        List<Processes> processes = byId.getProcesses();
-        int index = processes.indexOf(processesDAO.findByName(nextStep));
-        List<Processes> processesListAfterChange = new ArrayList<>(processes.subList(index, processes.size()));
-        processes.add(processesDAO.findByName(nextStep));
-        Collections.reverse(processesListAfterChange);
-        byId.setProcesses(processesListAfterChange);
-        orderDAO.save(byId);
+        if(!nextStep.equals("Zgłoś uwagi")) {
+            Order byId = orderDAO.findById(Long.valueOf(id)).get();
+            List<Processes> processes = byId.getProcesses();
+            int index = processes.indexOf(processesDAO.findByName(nextStep));
+            List<Processes> processesListAfterChange = new ArrayList<>(processes.subList(index, processes.size()));
+            processes.add(processesDAO.findByName(nextStep));
+            Collections.reverse(processesListAfterChange);
+            byId.setProcesses(processesListAfterChange);
+            orderDAO.save(byId);
+        }
     }
 
     public List<Order> listAll(){

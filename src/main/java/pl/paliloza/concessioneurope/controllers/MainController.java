@@ -60,7 +60,7 @@ public class MainController {
     @GetMapping("/pila")
     public String viewSawPage(Model model) {
         model.addAttribute("sawOrdersPerDay",planOfTheDayService.showAllPlansByName("Piła panelowa"));
-        model.addAttribute("sawOrders",orderService.getAllOrdersByName("Piła panelowa"));
+        model.addAttribute("sawOrdersDesc",orderService.getAllOrdersByName("Piła panelowa"));
         model.addAttribute("orders", orderService.getAllOrders());
         model.addAttribute("statuses", orderService.orderShow());
         model.addAttribute("processesList", orderService.processesShow());
@@ -81,8 +81,10 @@ public class MainController {
 
     @PostMapping("/pilaSelect")
     public String sawPagePostSelect(@RequestParam String nextStep, @RequestParam String id){
-        orderService.goToAnotherStep(nextStep,id);
-        planOfTheDayService.removeFromTheList(id,"Piła panelowa");
+        if(!nextStep.equals("Zgłoś uwagi")) {
+            orderService.goToAnotherStep(nextStep, id);
+            planOfTheDayService.removeFromTheList(id, "Piła panelowa");
+        }
         return "redirect:/pila";
     }
     // ===================================================================================
