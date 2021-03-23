@@ -1,5 +1,6 @@
 package pl.paliloza.concessioneurope.services;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pl.paliloza.concessioneurope.dao.OrderDAO;
 import pl.paliloza.concessioneurope.dao.OrderStatusDAO;
@@ -75,4 +76,10 @@ public class OrderService {
         byId.setProcesses(processesListAfterChange);
         orderDAO.save(byId);
     }
+
+    public List<Order> listAll(){
+        return orderDAO.findAll(Sort.by("date").ascending());
+    }
+
+
 }
