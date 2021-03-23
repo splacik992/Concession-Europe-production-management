@@ -12,9 +12,8 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4 container-fluid">
         <h1 class="h3 mb-0 text-gray-800">Panel główny</h1>
-        <a href="/order/export/excel">Export to Excel</a>
-    </div>
 
+    </div>
     <!-- Content Row -->
     <div class="row">
         <div class="container-fluid">
