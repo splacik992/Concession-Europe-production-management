@@ -9,6 +9,7 @@ import pl.paliloza.concessioneurope.entity.Order;
 import pl.paliloza.concessioneurope.entity.OrderStatus;
 import pl.paliloza.concessioneurope.entity.Processes;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -68,7 +69,6 @@ public class OrderService {
     }
 
     public void goToAnotherStep(String nextStep, String id) {
-        if(!nextStep.equals("Zgłoś uwagi")) {
             Order byId = orderDAO.findById(Long.valueOf(id)).get();
             List<Processes> processes = byId.getProcesses();
             int index = processes.indexOf(processesDAO.findByName(nextStep));
@@ -77,7 +77,28 @@ public class OrderService {
             Collections.reverse(processesListAfterChange);
             byId.setProcesses(processesListAfterChange);
             orderDAO.save(byId);
+    }
+    @Transactional
+    public void goToAnotherStepPop(String nextStep, String id) {
+        Order byId = orderDAO.findById(Long.valueOf(id)).get();
+        List<Processes> processes = byId.getProcesses();
+        int index = processes.indexOf(processesDAO.findByName(nextStep));
+        System.out.println(index);
+        if(index == -1){
+            Processes processNew = processesDAO.findByName(nextStep);
+            processes.add(0,processNew);
+            for (Processes process : processes) {
+                System.out.println(process.getName());
+            }
+            byId.setProcesses(processes);
+
+        }else {
+            List<Processes> processesListAfterChange = new ArrayList<>(processes.subList(index, processes.size()));
+            processes.add(processesDAO.findByName(nextStep));
+            Collections.reverse(processesListAfterChange);
+            byId.setProcesses(processesListAfterChange);
         }
+
     }
 
     public List<Order> listAll(){

@@ -87,6 +87,14 @@ public class MainController {
         }
         return "redirect:/pila";
     }
+
+    @PostMapping("/pilaSelectPop")
+    public String sawPagePostSelectPop(@RequestParam String nextStep, @RequestParam String id){
+            orderService.goToAnotherStepPop(nextStep, id);
+            planOfTheDayService.removeFromTheList(id, "Piła panelowa");
+
+        return "redirect:/pila";
+    }
     // ===================================================================================
 
     //OKLEINIARKA ====================================================================================

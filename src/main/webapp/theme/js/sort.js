@@ -74,12 +74,14 @@ let uwagiBtn = document.querySelector(".uwagiBtn");
 let popDivToHide = document.querySelector(".popDivToHide");
 let goToNextProcessButton = document.querySelector('.goToNextProcessButton');
 let select = document.querySelector('.nextStepSelect');
+let popForm = document.querySelector('.popForm');
 closeButton.addEventListener('click',e=>{
     popDivToHide.classList.add('d-none');
 })
 
-uwagiBtn.addEventListener('click',e=>{
+popForm.addEventListener('submit',e=>{
     popDivToHide.classList.add('d-none');
+    popForm.submit();
 })
 
 goToNextProcessButton.addEventListener('click',e=>{

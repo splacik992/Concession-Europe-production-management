@@ -145,6 +145,7 @@
                                     <td>
                                         <form action="/pilaSelect" method="post">
                                             <input type="hidden" value="${sawOrder.id}">
+                                            <c:set var="orderId" value="${sawOrder.id}"/>
                                             <select name="nextStep" class="nextStepSelect">
                                                 <c:forEach items="${sawOrder.processes}" var="process" begin="1">
                                                     <option value="${process.name}">${process.name}</option>
@@ -249,13 +250,13 @@
         <div class="text-center">
             <h1 class="h4 text-gray-900 mb-4">Uwagi do zamówienia:</h1>
         </div>
-        <form class="user d-flex flex-column align-items-center w-50" method="post">
+        <form class="user d-flex flex-column align-items-center w-50 popForm" method="post" action="/pilaSelectPop">
             <div class="form-group row w-100">
-                    <input type="hidden" id="a" name="orderListener">
                     <textarea type="text" class="w-100 textarea"
                               id="material"
-                              placeholder="Uwagi"></textarea>
+                              placeholder="Uwagi" name="comments"></textarea>
             </div>
+            <input name="id" type="hidden" value="${orderId}">
             <jsp:text>Wyślij zamówienie na:</jsp:text>
             <select name="nextStep" class="mb-3">
                 <c:forEach items="${processesList}" var="process">
@@ -265,7 +266,7 @@
             <button type="submit" class="btn btn-lg btn-primary shadow-sm uwagiBtn">Prześlij</button>
         </form>
         <div class="d-flex">
-            <c:forEach items="${sawOrder.processes.get(sawOrder.id)}" var="process">
+            <c:forEach items="${sawOrder.processes.get(orderId)}" var="process">
                 <c:set var="string4" value="${fn:split(process.name, ' ')}"/>
                 <c:set var="string5" value="${fn:join(string4, '-')}1"/>
                 <span class="processOrder" id="${string5}"></span>
