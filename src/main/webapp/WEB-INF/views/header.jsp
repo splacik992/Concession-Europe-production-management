@@ -69,6 +69,7 @@
             Plany dnia
         </div>
 
+
         <!-- Nav Item - Pages Collapse Menu -->
         <!--        <li class="nav-item">-->
         <!--            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"-->
@@ -162,6 +163,14 @@
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
 
     </ul>
     <!-- End of Sidebar -->
@@ -180,7 +189,9 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
+
                 </form>
+
 
                 <!-- Topbar Search -->
                 <form
@@ -196,6 +207,16 @@
                         </div>
                     </div>
                 </form>
+
+                <c:url value="/order/import/excel" var="uploadFileUrl" />
+                <form class="btn btn-sm btn-primary shadow-sm" method="post" enctype="multipart/form-data"
+
+                      action="${uploadFileUrl}">
+                    <input type="file" name="file" accept=".xls,.xlsx" /> <input
+                        type="submit" value="Wczytaj z dysku" class="btn btn-sm btn-primary shadow-sm"/>
+                </form>
+
+                <a href="/order/export/excel" class="btn btn-sm btn-primary shadow-sm">Zapisz na dysk</a>
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
