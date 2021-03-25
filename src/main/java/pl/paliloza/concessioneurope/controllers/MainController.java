@@ -11,12 +11,7 @@ import pl.paliloza.concessioneurope.entity.Processes;
 import pl.paliloza.concessioneurope.services.OrderService;
 import pl.paliloza.concessioneurope.services.PlanOfTheDayService;
 import pl.paliloza.concessioneurope.services.ProcessService;
-import pl.paliloza.concessioneurope.utils.OrderToExcelExporter;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
@@ -98,7 +93,7 @@ public class MainController {
     // ===================================================================================
 
     //OKLEINIARKA ====================================================================================
-    @GetMapping("/okleiniarka")
+    @GetMapping("/edgebander")
     public String viewEdgebander(Model model) {
         model.addAttribute("edgebanderOrdersPerDay",planOfTheDayService.showAllPlansByName("Okleiniarka"));
         model.addAttribute("edgebanderOrders",orderService.getAllOrdersByName("Okleiniarka"));
@@ -112,22 +107,30 @@ public class MainController {
     @PostMapping("/edgebanderAdd")
     public String edgebanderAdd(@RequestParam String id){
         planOfTheDayService.addToTheList(id,"Okleiniarka");
-        return "redirect:/okleiniarka";
+        return "redirect:/edgebander";
     }
 
     @PostMapping("/edgebanderRemove")
     public String edgebanderRemove(@RequestParam String id){
         planOfTheDayService.removeFromTheList(id,"Okleiniarka");
-        return "redirect:/okleiniarka";
+        return "redirect:/edgebander";
     }
 
     @PostMapping("/edgebanderSelect")
     public String edgebanderSelect(@RequestParam String nextStep, @RequestParam String id){
-        orderService.goToAnotherStep(nextStep,id);
-        planOfTheDayService.removeFromTheList(id,"Okleiniarka");
-        return "redirect:/okleiniarka";
+        if(!nextStep.equals("Zgłoś uwagi")) {
+            orderService.goToAnotherStep(nextStep, id);
+            planOfTheDayService.removeFromTheList(id, "Okleiniarka");
+        }
+        return "redirect:/edgebander";
     }
+    @PostMapping("/edgebanderSelectPop")
+    public String edgebanderSelectPop(@RequestParam String nextStep, @RequestParam String id){
+        orderService.goToAnotherStepPop(nextStep, id);
+        planOfTheDayService.removeFromTheList(id, "Okleiniarka");
 
+        return "redirect:/edgebander";
+    }
     // ===================================================================================
 
 

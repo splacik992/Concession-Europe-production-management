@@ -72,7 +72,7 @@ $("[type=checkbox]").on('change', function() { // always use change event
 let closeButton = document.querySelector(".closeButton");
 let uwagiBtn = document.querySelector(".uwagiBtn");
 let popDivToHide = document.querySelector(".popDivToHide");
-let goToNextProcessButton = document.querySelector('.goToNextProcessButton');
+let goToNextProcessButton = document.querySelectorAll('.goToNextProcessButton');
 let select = document.querySelector('.nextStepSelect');
 let popForm = document.querySelector('.popForm');
 closeButton.addEventListener('click',e=>{
@@ -84,9 +84,11 @@ popForm.addEventListener('submit',e=>{
     popForm.submit();
 })
 
-goToNextProcessButton.addEventListener('click',e=>{
-    e.preventDefault();
-    if(select.value === 'Zgłoś uwagi'){
-       popDivToHide.classList.remove('d-none');
-    }
+goToNextProcessButton.forEach(e => {
+    goToNextProcessButton.addEventListener('click',e=>{
+        e.preventDefault();
+        if(select.value === 'Zgłoś uwagi'){
+            popDivToHide.classList.remove('d-none');
+        }
+    })
 })

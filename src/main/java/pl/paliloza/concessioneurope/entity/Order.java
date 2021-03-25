@@ -20,6 +20,7 @@ public class Order {
     @OneToOne
     private OrderStatus orderStatus;
     @ManyToMany
+    @OrderColumn
     private List<Processes> processes;
 
     public List<Processes> getProcesses() {

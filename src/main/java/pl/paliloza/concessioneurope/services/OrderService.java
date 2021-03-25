@@ -2,6 +2,7 @@ package pl.paliloza.concessioneurope.services;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.paliloza.concessioneurope.dao.OrderDAO;
 import pl.paliloza.concessioneurope.dao.OrderStatusDAO;
 import pl.paliloza.concessioneurope.dao.ProcessesDAO;
@@ -9,9 +10,11 @@ import pl.paliloza.concessioneurope.entity.Order;
 import pl.paliloza.concessioneurope.entity.OrderStatus;
 import pl.paliloza.concessioneurope.entity.Processes;
 
-import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 public class OrderService {
@@ -56,7 +59,6 @@ public class OrderService {
     }
 
     public Object getAllOrdersByName(String name) {
-        Processes byName = processesDAO.findByName(name);
         List<Order> allOrders = orderDAO.findAll();
         List<Order> ordersByName = new ArrayList<>();
         for (Order allOrder : allOrders) {
@@ -74,31 +76,26 @@ public class OrderService {
             int index = processes.indexOf(processesDAO.findByName(nextStep));
             List<Processes> processesListAfterChange = new ArrayList<>(processes.subList(index, processes.size()));
             processes.add(processesDAO.findByName(nextStep));
-            Collections.reverse(processesListAfterChange);
             byId.setProcesses(processesListAfterChange);
             orderDAO.save(byId);
     }
+
     @Transactional
     public void goToAnotherStepPop(String nextStep, String id) {
-        Order byId = orderDAO.findById(Long.valueOf(id)).get();
-        List<Processes> processes = byId.getProcesses();
+        Order order = orderDAO.findById(Long.valueOf(id)).get();
+        List<Processes> processes = order.getProcesses();
         int index = processes.indexOf(processesDAO.findByName(nextStep));
         System.out.println(index);
         if(index == -1){
             Processes processNew = processesDAO.findByName(nextStep);
             processes.add(0,processNew);
-            for (Processes process : processes) {
-                System.out.println(process.getName());
-            }
-            byId.setProcesses(processes);
-
+            orderDAO.save(order);
         }else {
             List<Processes> processesListAfterChange = new ArrayList<>(processes.subList(index, processes.size()));
             processes.add(processesDAO.findByName(nextStep));
             Collections.reverse(processesListAfterChange);
-            byId.setProcesses(processesListAfterChange);
+            order.setProcesses(processesListAfterChange);
         }
-
     }
 
     public List<Order> listAll(){

@@ -147,7 +147,7 @@
                                                 <c:forEach items="${edgebanderOrder.processes}" var="process" begin="1">
                                                     <option value="${process.name}">${process.name}</option>
                                                 </c:forEach>
-                                                <option value="Zgłoś Uwagi">Zgłoś uwagi</option>
+                                                <option value="Zgłoś uwagi">Zgłoś uwagi</option>
                                             </select>
 
                                             <input name="id" type="hidden" value="${edgebanderOrder.id}">
@@ -554,6 +554,40 @@
     <!--                </div>-->
     <!-- /.container-fluid -->
 
+</div>
+<div class="popDivToHide d-none">
+    <div class="p-5 popDiv d-flex flex-column align-items-center">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Uwagi do zamówienia:</h1>
+        </div>
+        <form class="user d-flex flex-column align-items-center w-50 popForm" method="post" action="/edgebanderSelectPop">
+            <div class="form-group row w-100">
+                    <textarea type="text" class="w-100 textarea"
+                              id="material"
+                              placeholder="Uwagi" name="comments"></textarea>
+            </div>
+            <input name="id" type="hidden" value="${orderId}">
+            <jsp:text>Wyślij zamówienie na:</jsp:text>
+            <select name="nextStep" class="mb-3">
+                <c:forEach items="${processesList}" var="process">
+                    <option value="${process}">${process}</option>
+                </c:forEach>
+            </select>
+            <button type="submit" class="btn btn-lg btn-primary shadow-sm uwagiBtn">Prześlij</button>
+        </form>
+        <div class="d-flex">
+            <c:forEach items="${sawOrder.processes.get(orderId)}" var="process">
+                <c:set var="string4" value="${fn:split(process.name, ' ')}"/>
+                <c:set var="string5" value="${fn:join(string4, '-')}1"/>
+                <span class="processOrder" id="${string5}"></span>
+            </c:forEach>
+
+        </div>
+
+        <i class="fas fa-times closeButton"></i>
+    </div>
+    <div class="divAbovePopDiv">
+    </div>
 </div>
 <!-- End of Main Content -->
 <jsp:include page="footer.jsp"/>
