@@ -265,14 +265,6 @@
             </select>
             <button type="submit" class="btn btn-lg btn-primary shadow-sm uwagiBtn">Prześlij</button>
         </form>
-        <div class="d-flex">
-            <c:forEach items="${sawOrder.processes.get(orderId)}" var="process">
-                <c:set var="string4" value="${fn:split(process.name, ' ')}"/>
-                <c:set var="string5" value="${fn:join(string4, '-')}1"/>
-                <span class="processOrder" id="${string5}"></span>
-            </c:forEach>
-
-        </div>
 
         <i class="fas fa-times closeButton"></i>
     </div>

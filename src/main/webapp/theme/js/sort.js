@@ -10,22 +10,22 @@ let hiddenInput = document.getElementById('a');
 //     $(this).unbind('submit').submit()
 // })
 
-$('.user').submit( function(ev) {
+$('.user').submit(function (ev) {
     ev.preventDefault();
     //later you decide you want to submit
-    hiddenInput.setAttribute("value",order.toString());
+    hiddenInput.setAttribute("value", order.toString());
     $(this).unbind('submit').submit();
 });
 
-$("[type=checkbox]").on('change', function() { // always use change event
+$("[type=checkbox]").on('change', function () { // always use change event
     let idx = order.indexOf(this.value);
     if (idx !== -1) {// if already in array
         console.log(idx)
         let array = result.querySelectorAll("button");
-        order.splice(idx,1);
+        order.splice(idx, 1);
         console.log(order);
         result.innerHTML = "";
-        order.forEach(el=>{
+        order.forEach(el => {
             th = document.createElement("button");
             th.classList.add("btn");
             th.classList.add("btn-primary");
@@ -35,13 +35,13 @@ $("[type=checkbox]").on('change', function() { // always use change event
             let str = el.split(" ");
             let str2 = str.join("-");
             let str3 = str2 + "1";
-            th.setAttribute("id",str3);
-            th.setAttribute("disabled","true");
+            th.setAttribute("id", str3);
+            th.setAttribute("disabled", "true");
             th.setAttribute("name", "processButton");
-            th.innerText = order.indexOf(el) + 1 +" "+ el;
+            th.innerText = order.indexOf(el) + 1 + " " + el;
             result.appendChild(th);
         })
-        sessionStorage.setItem("orderSess",order.toString());
+        sessionStorage.setItem("orderSess", order.toString());
 
 
     }
@@ -57,12 +57,12 @@ $("[type=checkbox]").on('change', function() { // always use change event
         let str = this.value.split(" ");
         let str2 = str.join("-");
         let str3 = str2 + "1";
-        th.setAttribute("id",str3);
-        th.setAttribute("disabled","true");
-        th.setAttribute("name","processButton");
-        th.innerText = order.indexOf(this.value) +1 +" "+ this.value;
+        th.setAttribute("id", str3);
+        th.setAttribute("disabled", "true");
+        th.setAttribute("name", "processButton");
+        th.innerText = order.indexOf(this.value) + 1 + " " + this.value;
         result.appendChild(th);
-        sessionStorage.setItem("orderSess",order.toString());
+        sessionStorage.setItem("orderSess", order.toString());
     }
 
     // <------------------------------------For demonstration
@@ -70,25 +70,37 @@ $("[type=checkbox]").on('change', function() { // always use change event
 });
 
 let closeButton = document.querySelector(".closeButton");
-let uwagiBtn = document.querySelector(".uwagiBtn");
 let popDivToHide = document.querySelector(".popDivToHide");
-let goToNextProcessButton = document.querySelectorAll('.goToNextProcessButton');
+let goToNextProcessButtons = document.querySelectorAll('.goToNextProcessButton');
 let select = document.querySelector('.nextStepSelect');
-let popForm = document.querySelector('.popForm');
-closeButton.addEventListener('click',e=>{
-    popDivToHide.classList.add('d-none');
-})
-
-popForm.addEventListener('submit',e=>{
-    popDivToHide.classList.add('d-none');
-    popForm.submit();
-})
-
-goToNextProcessButton.forEach(e => {
-    goToNextProcessButton.addEventListener('click',e=>{
-        e.preventDefault();
-        if(select.value === 'Zgłoś uwagi'){
+let popForms = document.querySelectorAll('.popForm');
+console.log(goToNextProcessButtons);
+goToNextProcessButtons.forEach(e => {
+    e.addEventListener('click', ev => {
+        if (e.parentElement.childNodes[3].value === 'Zgłoś uwagi') {
+            ev.preventDefault();
+            console.log('cos')
             popDivToHide.classList.remove('d-none');
         }
     })
 })
+
+
+closeButton.addEventListener('click', e => {
+    popDivToHide.classList.add('d-none');
+})
+
+popForms.forEach(el => {
+    el.addEventListener('submit', e => {
+        popDivToHide.classList.add('d-none');
+        el.submit();
+    })
+})
+
+
+// goToNextProcessButton.addEventListener('click', e => {
+//     e.preventDefault();
+//     if (select.value === 'Zgłoś uwagi') {
+//             popDivToHide.classList.remove('d-none');
+//     }
+// })
