@@ -22,6 +22,15 @@ public class Order {
     @ManyToMany
     @OrderColumn
     private List<Processes> processes;
+    private String notes;
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 
     public List<Processes> getProcesses() {
         return processes;
