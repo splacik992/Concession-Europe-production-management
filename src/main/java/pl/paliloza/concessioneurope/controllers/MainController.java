@@ -44,7 +44,7 @@ public class MainController {
             Processes processByNa = processService.getProcessByName(s);
             newProcessList.add(processByNa);
         }
-
+        System.out.println(order.getNotes());
         orderService.add(order,newProcessList);
         return "redirect:/";
     }
@@ -78,14 +78,16 @@ public class MainController {
     public String sawPagePostSelect(@RequestParam String nextStep, @RequestParam String id){
         if(!nextStep.equals("Zgłoś uwagi")) {
             orderService.goToAnotherStep(nextStep, id);
+            orderService.commentsRemove(id);
             planOfTheDayService.removeFromTheList(id, "Piła panelowa");
         }
         return "redirect:/pila";
     }
 
     @PostMapping("/pilaSelectPop")
-    public String sawPagePostSelectPop(@RequestParam String nextStep, @RequestParam String id){
+    public String sawPagePostSelectPop(@RequestParam String nextStep, @RequestParam String id, @RequestParam String comments){
             orderService.goToAnotherStepPop(nextStep, id);
+            orderService.commentsAdd(comments,id);
             planOfTheDayService.removeFromTheList(id, "Piła panelowa");
 
         return "redirect:/pila";
@@ -120,13 +122,15 @@ public class MainController {
     public String edgebanderSelect(@RequestParam String nextStep, @RequestParam String id){
         if(!nextStep.equals("Zgłoś uwagi")) {
             orderService.goToAnotherStep(nextStep, id);
+            orderService.commentsRemove(id);
             planOfTheDayService.removeFromTheList(id, "Okleiniarka");
         }
         return "redirect:/edgebander";
     }
     @PostMapping("/edgebanderSelectPop")
-    public String edgebanderSelectPop(@RequestParam String nextStep, @RequestParam String id){
+    public String edgebanderSelectPop(@RequestParam String nextStep, @RequestParam String id, @RequestParam String comments){
         orderService.goToAnotherStepPop(nextStep, id);
+        orderService.commentsAdd(comments, id);
         planOfTheDayService.removeFromTheList(id, "Okleiniarka");
 
         return "redirect:/edgebander";

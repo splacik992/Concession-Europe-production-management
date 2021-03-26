@@ -97,6 +97,12 @@ popForms.forEach(el => {
     })
 })
 
+let notes = document.querySelectorAll('.notes');
+
+notes.forEach(el=>{
+    el.innerText = "BRAK";
+})
+
 
 // goToNextProcessButton.addEventListener('click', e => {
 //     e.preventDefault();

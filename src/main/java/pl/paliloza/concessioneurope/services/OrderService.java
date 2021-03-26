@@ -50,6 +50,7 @@ public class OrderService {
         OrderStatus orderStatus = orderStatusDAO.findByName("W trakcie");
         order.setOrderStatus(orderStatus);
         order.setProcesses(newProcessList);
+        order.setNotes("");
         order.setDate(LocalDate.now());
         orderDAO.save(order);
     }
@@ -93,7 +94,6 @@ public class OrderService {
         }else {
             List<Processes> processesListAfterChange = new ArrayList<>(processes.subList(index, processes.size()));
             processes.add(processesDAO.findByName(nextStep));
-            Collections.reverse(processesListAfterChange);
             order.setProcesses(processesListAfterChange);
         }
     }
@@ -103,4 +103,15 @@ public class OrderService {
     }
 
 
+    public void commentsAdd(String comments, String id) {
+        Order order = orderDAO.findById(Long.valueOf(id)).get();
+        order.setNotes(comments);
+        orderDAO.save(order);
+    }
+
+    public void commentsRemove(String id) {
+        Order order = orderDAO.findById(Long.valueOf(id)).get();
+        order.setNotes("");
+        orderDAO.save(order);
+    }
 }

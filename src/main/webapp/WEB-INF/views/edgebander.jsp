@@ -100,7 +100,7 @@
                                 <th>Ilość</th>
                                 <th>Zleceniodawca</th>
                                 <th>Data</th>
-                                <th>Status zamówienia</th>
+                                <th>Uwagi</th>
                                 <th>Aktualny etap</th>
                                 <th>Kolejka</th>
                                 <th>Usuń z planu</th>
@@ -119,11 +119,22 @@
                                     <td>${edgebanderOrder.principal}</td>
                                     <td>${edgebanderOrder.date}</td>
 
-                                    <td>${edgebanderOrder.orderStatus.name}</td>
-                                    <c:set var="string6" value="${fn:split(edgebanderOrder.processes.get(0).name, ' ')}"/>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${!edgebanderOrder.notes.equals('')}">
+                                                ${edgebanderOrder.notes}
+                                            </c:when>
+                                            <c:otherwise>
+                                                BRAK
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                    <c:set var="string6"
+                                           value="${fn:split(edgebanderOrder.processes.get(0).name, ' ')}"/>
                                     <c:set var="string7" value="${fn:join(string6, '-')}1"/>
                                     <td>
-                                        <div class="actualState" id="${string7}">${edgebanderOrder.processes.get(0).name}</div>
+                                        <div class="actualState"
+                                             id="${string7}">${edgebanderOrder.processes.get(0).name}</div>
                                     </td>
                                     <td class="tableRow">
                                         <div class="d-flex">
@@ -137,7 +148,9 @@
                                     <td>
                                         <form action="/edgebanderRemove" method="post">
                                             <input name="id" type="hidden" value="${edgebanderOrder.id}">
-                                            <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit" value="${edgebanderOrder.id}">Usuń</button>
+                                            <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit"
+                                                    value="${edgebanderOrder.id}">Usuń
+                                            </button>
                                         </form>
                                     </td>
                                     <td>
@@ -152,7 +165,9 @@
                                             </select>
 
                                             <input name="id" type="hidden" value="${edgebanderOrder.id}">
-                                            <button class="btn btn-sm btn-primary shadow-sm goToNextProcessButton" type="submit" value="${edgebanderOrder.id}">Prześlij dalej</button>
+                                            <button class="btn btn-sm btn-primary shadow-sm goToNextProcessButton"
+                                                    type="submit" value="${edgebanderOrder.id}">Prześlij dalej
+                                            </button>
                                         </form>
 
                                     </td>
@@ -184,7 +199,7 @@
                                 <th>Ilość</th>
                                 <th>Zleceniodawca</th>
                                 <th>Data</th>
-                                <th>Status zamówienia</th>
+                                <th>Uwagi</th>
                                 <th>Aktualny etap</th>
                                 <th>Kolejka</th>
                                 <th>Dodaj na dziś</th>
@@ -202,11 +217,22 @@
                                     <td>${edgebanderOrder.principal}</td>
                                     <td>${edgebanderOrder.date}</td>
 
-                                    <td>${edgebanderOrder.orderStatus.name}</td>
-                                    <c:set var="string6" value="${fn:split(edgebanderOrder.processes.get(0).name, ' ')}"/>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${!edgebanderOrder.notes.equals('')}">
+                                                ${edgebanderOrder.notes}
+                                            </c:when>
+                                            <c:otherwise>
+                                                BRAK
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                    <c:set var="string6"
+                                           value="${fn:split(edgebanderOrder.processes.get(0).name, ' ')}"/>
                                     <c:set var="string7" value="${fn:join(string6, '-')}1"/>
                                     <td>
-                                        <div class="actualState" id="${string7}">${edgebanderOrder.processes.get(0).name}</div>
+                                        <div class="actualState"
+                                             id="${string7}">${edgebanderOrder.processes.get(0).name}</div>
                                     </td>
                                     <td class="tableRow">
                                         <div class="d-flex">
@@ -220,7 +246,9 @@
                                     <td>
                                         <form action="/edgebanderAdd" method="post">
                                             <input name="id" type="hidden" value="${edgebanderOrder.id}">
-                                            <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit" value="${edgebanderOrder.id}">Dodaj</button>
+                                            <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit"
+                                                    value="${edgebanderOrder.id}">Dodaj
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>
@@ -243,7 +271,8 @@
         <div class="text-center">
             <h1 class="h4 text-gray-900 mb-4">Uwagi do zamówienia:</h1>
         </div>
-        <form class="user d-flex flex-column align-items-center w-50 popForm" method="post" action="/edgebanderSelectPop">
+        <form class="user d-flex flex-column align-items-center w-50 popForm" method="post"
+              action="/edgebanderSelectPop">
             <div class="form-group row w-100">
                     <textarea type="text" class="w-100 textarea"
                               id="material"

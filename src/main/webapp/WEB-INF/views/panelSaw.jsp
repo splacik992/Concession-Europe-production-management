@@ -100,7 +100,7 @@
                                 <th>Ilość</th>
                                 <th>Zleceniodawca</th>
                                 <th>Data</th>
-                                <th>Status zamówienia</th>
+                                <th>Uwagi</th>
                                 <th>Aktualny etap</th>
                                 <th>Kolejka</th>
                                 <th>Usuń z planu</th>
@@ -119,7 +119,16 @@
                                     <td>${sawOrder.principal}</td>
                                     <td>${sawOrder.date}</td>
 
-                                    <td>${sawOrder.orderStatus.name}</td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${!sawOrder.notes.equals('')}">
+                                                ${sawOrder.notes}
+                                            </c:when>
+                                            <c:otherwise>
+                                                BRAK
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
                                     <c:set var="string6" value="${fn:split(sawOrder.processes.get(0).name, ' ')}"/>
                                     <c:set var="string7" value="${fn:join(string6, '-')}1"/>
                                     <td>
@@ -188,7 +197,7 @@
                                 <th>Ilość</th>
                                 <th>Zleceniodawca</th>
                                 <th>Data</th>
-                                <th>Status zamówienia</th>
+                                <th>Uwagi</th>
                                 <th>Aktualny etap</th>
                                 <th>Kolejka</th>
                                 <th>Dodaj na dziś</th>
@@ -206,7 +215,16 @@
                                     <td>${sawOrder.principal}</td>
                                     <td>${sawOrder.date}</td>
 
-                                    <td>${sawOrder.orderStatus.name}</td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${!sawOrder.notes.equals('')}">
+                                                ${sawOrder.notes}
+                                            </c:when>
+                                            <c:otherwise>
+                                                BRAK
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
                                     <c:set var="string6" value="${fn:split(sawOrder.processes.get(0).name, ' ')}"/>
                                     <c:set var="string7" value="${fn:join(string6, '-')}1"/>
                                     <td>
