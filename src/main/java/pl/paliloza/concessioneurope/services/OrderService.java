@@ -86,7 +86,6 @@ public class OrderService {
         Order order = orderDAO.findById(Long.valueOf(id)).get();
         List<Processes> processes = order.getProcesses();
         int index = processes.indexOf(processesDAO.findByName(nextStep));
-        System.out.println(index);
         if(index == -1){
             Processes processNew = processesDAO.findByName(nextStep);
             processes.add(0,processNew);

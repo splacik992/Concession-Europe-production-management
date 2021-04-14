@@ -44,7 +44,6 @@ public class MainController {
             Processes processByNa = processService.getProcessByName(s);
             newProcessList.add(processByNa);
         }
-        System.out.println(order.getNotes());
         orderService.add(order,newProcessList);
         return "redirect:/";
     }

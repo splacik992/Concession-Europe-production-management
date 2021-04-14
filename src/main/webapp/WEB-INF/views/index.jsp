@@ -28,29 +28,29 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Nowe zamówienie</h1>
                         </div>
-                        <form:form class="user" method="post" action="/" modelAttribute="order" id="form">
+                        <form:form name="form" class="user" method="post" action="/" modelAttribute="order" id="form">
                             <div class="form-group row">
                                 <div class="col-sm-3">
                                     <input type="hidden" id="a" name="orderListener">
                                     <form:input path="materialName" type="text" class="form-control form-control-user"
                                                 id="material"
-                                                placeholder="Materiał"/>
+                                                placeholder="Materiał" name="material"/>
                                 </div>
                                 <div class="col-sm-3">
                                     <form:input path="productName" type="text" class="form-control form-control-user"
                                                 id="productName"
-                                                placeholder="Nazwa produktu"/>
+                                                placeholder="Nazwa produktu" name="product"/>
                                 </div>
                                 <div class="col-sm-3">
                                     <form:input path="clientName" type="text" class="form-control form-control-user"
                                                 id="clientName"
-                                                placeholder="Klient"/>
+                                                placeholder="Klient" name="client"/>
                                 </div>
                                 <div class="col-sm-2">
                                     <form:input path="count" type="number" class="form-control form-control-user"
-                                                id="count" placeholder="Ilość"/>
+                                                id="count" placeholder="Ilość" name="count" min="1" value="1"/>
                                 </div>
-                                <button type="submit" class="btn btn-lg btn-primary shadow-sm">Dodaj</button>
+                                <button type="submit" id="addOrderButton" class="btn btn-lg btn-primary shadow-sm" >Dodaj</button>
 
                             </div>
                             <section>
