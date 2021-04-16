@@ -136,7 +136,47 @@ public class MainController {
     }
     // ===================================================================================
 
+    //CNC ====================================================================================
+    @GetMapping("/cnc")
+    public String viewCNC(Model model) {
+        model.addAttribute("cncOrdersPerDay",planOfTheDayService.showAllPlansByName("CNC"));
+        model.addAttribute("cncOrders",orderService.getAllOrdersByName("CNC"));
+        model.addAttribute("orders", orderService.getAllOrders());
+        model.addAttribute("statuses", orderService.orderShow());
+        model.addAttribute("processesList", orderService.processesShow());
+        model.addAttribute("order", new Order());
+        return "cnc";
+    }
 
+    @PostMapping("/cncAdd")
+    public String cncAdd(@RequestParam String id){
+        planOfTheDayService.addToTheList(id,"CNC");
+        return "redirect:/cnc";
+    }
+
+    @PostMapping("/cncRemove")
+    public String cncRemove(@RequestParam String id){
+        planOfTheDayService.removeFromTheList(id,"CNC");
+        return "redirect:/cnc";
+    }
+
+    @PostMapping("/cncSelect")
+    public String cncSelect(@RequestParam String nextStep, @RequestParam String id){
+        if(!nextStep.equals("Zgłoś uwagi")) {
+            orderService.goToAnotherStep(nextStep, id);
+            orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "CNC");
+        }
+        return "redirect:/cnc";
+    }
+    @PostMapping("/cncSelectPop")
+    public String cncSelectPop(@RequestParam String nextStep, @RequestParam String id, @RequestParam String comments){
+        orderService.goToAnotherStepPop(nextStep, id);
+        orderService.commentsAdd(comments, id);
+        planOfTheDayService.removeFromTheList(id, "CNC");
+
+        return "redirect:/cnc";
+    }
 }
 
 

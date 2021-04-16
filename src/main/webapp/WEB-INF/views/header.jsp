@@ -99,7 +99,7 @@
                     <h6 class="collapse-header">Dostępne procesy:</h6>
                     <a class="collapse-item" href="/pila">Piła panelowa</a>
                     <a class="collapse-item" href="/edgebander">Okleiniarka</a>
-                    <a class="collapse-item" href="utilities-color.html">CNC</a>
+                    <a class="collapse-item" href="/cnc">CNC</a>
                     <a class="collapse-item" href="utilities-color.html">Prasa</a>
                     <a class="collapse-item" href="utilities-color.html">Szlifiernia</a>
                     <a class="collapse-item" href="utilities-color.html">Lakiernia</a>
