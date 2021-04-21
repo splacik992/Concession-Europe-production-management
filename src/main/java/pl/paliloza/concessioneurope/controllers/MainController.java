@@ -75,9 +75,14 @@ public class MainController {
 
     @PostMapping("/pilaSelect")
     public String sawPagePostSelect(@RequestParam String nextStep, @RequestParam String id){
-        if(!nextStep.equals("Zgłoś uwagi")) {
+        if(!nextStep.equals("Zgłoś uwagi") && !nextStep.equals("End")) {
             orderService.goToAnotherStep(nextStep, id);
             orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "Piła panelowa");
+        }
+        if(nextStep.equals("End")){
+            orderService.changeStatus("Zrealizowane",id);
+            orderService.clearSteps(id);
             planOfTheDayService.removeFromTheList(id, "Piła panelowa");
         }
         return "redirect:/pila";
@@ -119,9 +124,14 @@ public class MainController {
 
     @PostMapping("/edgebanderSelect")
     public String edgebanderSelect(@RequestParam String nextStep, @RequestParam String id){
-        if(!nextStep.equals("Zgłoś uwagi")) {
+        if(!nextStep.equals("Zgłoś uwagi") && !nextStep.equals("End")) {
             orderService.goToAnotherStep(nextStep, id);
             orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "Okleiniarka");
+        }
+        if(nextStep.equals("End")){
+            orderService.changeStatus("Zrealizowane",id);
+            orderService.clearSteps(id);
             planOfTheDayService.removeFromTheList(id, "Okleiniarka");
         }
         return "redirect:/edgebander";
@@ -162,9 +172,14 @@ public class MainController {
 
     @PostMapping("/cncSelect")
     public String cncSelect(@RequestParam String nextStep, @RequestParam String id){
-        if(!nextStep.equals("Zgłoś uwagi")) {
+        if(!nextStep.equals("Zgłoś uwagi") && !nextStep.equals("End")) {
             orderService.goToAnotherStep(nextStep, id);
             orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "CNC");
+        }
+        if(nextStep.equals("End")){
+            orderService.changeStatus("Zrealizowane",id);
+            orderService.clearSteps(id);
             planOfTheDayService.removeFromTheList(id, "CNC");
         }
         return "redirect:/cnc";
@@ -204,9 +219,14 @@ public class MainController {
 
     @PostMapping("/pressSelect")
     public String pressSelect(@RequestParam String nextStep, @RequestParam String id){
-        if(!nextStep.equals("Zgłoś uwagi")) {
+        if(!nextStep.equals("Zgłoś uwagi") && !nextStep.equals("End")) {
             orderService.goToAnotherStep(nextStep, id);
             orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "Prasa");
+        }
+        if(nextStep.equals("End")){
+            orderService.changeStatus("Zrealizowane",id);
+            orderService.clearSteps(id);
             planOfTheDayService.removeFromTheList(id, "Prasa");
         }
         return "redirect:/press";
@@ -245,9 +265,14 @@ public class MainController {
 
     @PostMapping("/grinderySelect")
     public String grinderyPostSelect(@RequestParam String nextStep, @RequestParam String id){
-        if(!nextStep.equals("Zgłoś uwagi")) {
+        if(!nextStep.equals("Zgłoś uwagi") && !nextStep.equals("End")) {
             orderService.goToAnotherStep(nextStep, id);
             orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "Szlifiernia");
+        }
+        if(nextStep.equals("End")){
+            orderService.changeStatus("Zrealizowane",id);
+            orderService.clearSteps(id);
             planOfTheDayService.removeFromTheList(id, "Szlifiernia");
         }
         return "redirect:/grindery";
@@ -288,9 +313,14 @@ public class MainController {
 
     @PostMapping("/paintSelect")
     public String paintPostSelect(@RequestParam String nextStep, @RequestParam String id){
-        if(!nextStep.equals("Zgłoś uwagi")) {
+        if(!nextStep.equals("Zgłoś uwagi") && !nextStep.equals("End")) {
             orderService.goToAnotherStep(nextStep, id);
             orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "Lakiernia");
+        }
+        if(nextStep.equals("End")){
+            orderService.changeStatus("Zrealizowane",id);
+            orderService.clearSteps(id);
             planOfTheDayService.removeFromTheList(id, "Lakiernia");
         }
         return "redirect:/paint";
@@ -332,9 +362,14 @@ public class MainController {
 
     @PostMapping("/woodySelect")
     public String woodyPostSelect(@RequestParam String nextStep, @RequestParam String id){
-        if(!nextStep.equals("Zgłoś uwagi")) {
+        if(!nextStep.equals("Zgłoś uwagi") && !nextStep.equals("End")) {
             orderService.goToAnotherStep(nextStep, id);
             orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "Dział drzewny");
+        }
+        if(nextStep.equals("End")){
+            orderService.changeStatus("Zrealizowane",id);
+            orderService.clearSteps(id);
             planOfTheDayService.removeFromTheList(id, "Dział drzewny");
         }
         return "redirect:/woody";
@@ -375,9 +410,14 @@ public class MainController {
 
     @PostMapping("/assemblySelect")
     public String assemblyPostSelect(@RequestParam String nextStep, @RequestParam String id){
-        if(!nextStep.equals("Zgłoś uwagi")) {
+        if(!nextStep.equals("Zgłoś uwagi") && !nextStep.equals("End")) {
             orderService.goToAnotherStep(nextStep, id);
             orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "Montaż");
+        }
+        if(nextStep.equals("End")){
+            orderService.changeStatus("Zrealizowane",id);
+            orderService.clearSteps(id);
             planOfTheDayService.removeFromTheList(id, "Montaż");
         }
         return "redirect:/assembly";
@@ -418,9 +458,14 @@ public class MainController {
 
     @PostMapping("/packingSelect")
     public String packingPostSelect(@RequestParam String nextStep, @RequestParam String id){
-        if(!nextStep.equals("Zgłoś uwagi")) {
+        if(!nextStep.equals("Zgłoś uwagi") && !nextStep.equals("End")) {
             orderService.goToAnotherStep(nextStep, id);
             orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "Pakowanie");
+        }
+        if(nextStep.equals("End")){
+            orderService.changeStatus("Zrealizowane",id);
+            orderService.clearSteps(id);
             planOfTheDayService.removeFromTheList(id, "Pakowanie");
         }
         return "redirect:/packing";
@@ -461,9 +506,14 @@ public class MainController {
 
     @PostMapping("/transportSelect")
     public String transportPostSelect(@RequestParam String nextStep, @RequestParam String id){
-        if(!nextStep.equals("Zgłoś uwagi")) {
+        if(!nextStep.equals("Zgłoś uwagi") && !nextStep.equals("End")) {
             orderService.goToAnotherStep(nextStep, id);
             orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "Transport");
+        }
+        if(nextStep.equals("End")){
+            orderService.changeStatus("Zrealizowane",id);
+            orderService.clearSteps(id);
             planOfTheDayService.removeFromTheList(id, "Transport");
         }
         return "redirect:/transport";

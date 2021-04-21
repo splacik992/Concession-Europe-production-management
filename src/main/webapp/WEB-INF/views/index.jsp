@@ -117,10 +117,14 @@
                                     <td>${order.date}</td>
 
                                     <td>${order.orderStatus.name}</td>
+                                    <c:if test="${order.processes.size() != 0}">
                                     <c:set var="string6" value="${fn:split(order.processes.get(0).name, ' ')}"/>
                                     <c:set var="string7" value="${fn:join(string6, '-')}1"/>
+                                    </c:if>
                                     <td>
+                                        <c:if test="${order.processes.size() != 0}">
                                         <div class="actualState" id="${string7}">${order.processes.get(0).name}</div>
+                                        </c:if>
                                     </td>
                                     <td class="tableRow">
                                         <div class="d-flex">

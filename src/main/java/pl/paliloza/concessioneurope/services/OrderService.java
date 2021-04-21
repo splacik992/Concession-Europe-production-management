@@ -63,8 +63,10 @@ public class OrderService {
         List<Order> allOrders = orderDAO.findAll();
         List<Order> ordersByName = new ArrayList<>();
         for (Order allOrder : allOrders) {
-            if (allOrder.getProcesses().get(0).getName().equals(name)) {
-                ordersByName.add(allOrder);
+            if(allOrder.getProcesses().size() != 0) {
+                if (allOrder.getProcesses().get(0).getName().equals(name)) {
+                    ordersByName.add(allOrder);
+                }
             }
         }
         Collections.reverse(ordersByName);
@@ -111,6 +113,19 @@ public class OrderService {
     public void commentsRemove(String id) {
         Order order = orderDAO.findById(Long.valueOf(id)).get();
         order.setNotes("");
+        orderDAO.save(order);
+    }
+
+    public void changeStatus(String name, String id) {
+        Order order = orderDAO.findById(Long.valueOf(id)).get();
+        OrderStatus byName = orderStatusDAO.findByName(name);
+        order.setOrderStatus(byName);
+        orderDAO.save(order);
+    }
+
+    public void clearSteps(String id) {
+        Order order = orderDAO.findById(Long.valueOf(id)).get();
+        order.setProcesses(new ArrayList<>());
         orderDAO.save(order);
     }
 }
