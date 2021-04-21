@@ -118,6 +118,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         if(formValidation() === true){
             form.submit();
         }
+
     })
 
     function formValidation(){
@@ -131,11 +132,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
         if(processName.length === 0){
             alert("Ustal kolejność produkcji.");
             window.stop();
+            location.reload();
             return false;
         }
         if(material == null || material === '' || product == null || product === '' || client == null || client === '' || count === '0' || count === null || count === ''){
             alert("Wypełnij poprawnie wszystie pola formularza !");
             window.stop();
+            location.reload();
             return false;
         }
         return true;

@@ -219,6 +219,49 @@ public class MainController {
 
         return "redirect:/press";
     }
+
+    // Szlifiernia ======================================================
+    @GetMapping("/grindery")
+    public String viewGrindery(Model model) {
+        model.addAttribute("grinderyOrdersPerDay",planOfTheDayService.showAllPlansByName("Szlifiernia"));
+        model.addAttribute("grinderyOrdersDesc",orderService.getAllOrdersByName("Szlifiernia"));
+        model.addAttribute("orders", orderService.getAllOrders());
+        model.addAttribute("statuses", orderService.orderShow());
+        model.addAttribute("processesList", orderService.processesShow());
+        model.addAttribute("order", new Order());
+        return "grindery";
+    }
+    @PostMapping("/grinderyAdd")
+    public String grinderyPostAdd(@RequestParam String id){
+        planOfTheDayService.addToTheList(id,"Szlifiernia");
+        return "redirect:/grindery";
+    }
+
+    @PostMapping("/grinderyRemove")
+    public String grinderyPostRemove(@RequestParam String id){
+        planOfTheDayService.removeFromTheList(id,"Szlifiernia");
+        return "redirect:/grindery";
+    }
+
+    @PostMapping("/grinderySelect")
+    public String grinderyPostSelect(@RequestParam String nextStep, @RequestParam String id){
+        if(!nextStep.equals("Zgłoś uwagi")) {
+            orderService.goToAnotherStep(nextStep, id);
+            orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "Szlifiernia");
+        }
+        return "redirect:/grindery";
+    }
+
+    @PostMapping("/grinderySelectPop")
+    public String grinderyPostSelectPop(@RequestParam String nextStep, @RequestParam String id, @RequestParam String comments){
+        orderService.goToAnotherStepPop(nextStep, id);
+        orderService.commentsAdd(comments,id);
+        planOfTheDayService.removeFromTheList(id, "Szlifiernia");
+
+        return "redirect:/grindery";
+    }
+    // ===================================================================================
 }
 
 
