@@ -263,7 +263,7 @@ public class MainController {
     }
     // ===================================================================================
 
-    // Szlifiernia ======================================================
+    // Lakiernia ======================================================
     @GetMapping("/paint")
     public String viewPaint(Model model) {
         model.addAttribute("paintOrdersPerDay",planOfTheDayService.showAllPlansByName("Lakiernia"));
@@ -303,6 +303,49 @@ public class MainController {
         planOfTheDayService.removeFromTheList(id, "Lakiernia");
 
         return "redirect:/paint";
+    }
+    // ===================================================================================
+
+    // Dział drzewny ======================================================
+    @GetMapping("/woody")
+    public String viewWoody(Model model) {
+        model.addAttribute("woodyOrdersPerDay",planOfTheDayService.showAllPlansByName("Dział drzewny"));
+        model.addAttribute("woodyOrdersDesc",orderService.getAllOrdersByName("Dział drzewny"));
+        model.addAttribute("orders", orderService.getAllOrders());
+        model.addAttribute("statuses", orderService.orderShow());
+        model.addAttribute("processesList", orderService.processesShow());
+        model.addAttribute("order", new Order());
+        return "woody";
+    }
+    @PostMapping("/woodyAdd")
+    public String woodyPostAdd(@RequestParam String id){
+        planOfTheDayService.addToTheList(id,"Dział drzewny");
+        return "redirect:/woody";
+    }
+
+    @PostMapping("/woodyRemove")
+    public String woodyPostRemove(@RequestParam String id){
+        planOfTheDayService.removeFromTheList(id,"Dział drzewny");
+        return "redirect:/woody";
+    }
+
+    @PostMapping("/woodySelect")
+    public String woodyPostSelect(@RequestParam String nextStep, @RequestParam String id){
+        if(!nextStep.equals("Zgłoś uwagi")) {
+            orderService.goToAnotherStep(nextStep, id);
+            orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "Dział drzewny");
+        }
+        return "redirect:/woody";
+    }
+
+    @PostMapping("/woodySelectPop")
+    public String woodyPostSelectPop(@RequestParam String nextStep, @RequestParam String id, @RequestParam String comments){
+        orderService.goToAnotherStepPop(nextStep, id);
+        orderService.commentsAdd(comments,id);
+        planOfTheDayService.removeFromTheList(id, "Dział drzewny");
+
+        return "redirect:/woody";
     }
     // ===================================================================================
 }
