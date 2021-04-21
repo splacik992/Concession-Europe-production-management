@@ -128,4 +128,10 @@ public class OrderService {
         order.setProcesses(new ArrayList<>());
         orderDAO.save(order);
     }
+
+    public Object getAllOrdersByStatusName(String name) {
+        OrderStatus byName = orderStatusDAO.findByName(name);
+        List<Order> orderList = orderDAO.findAllByOrderStatus(byName.getId());
+        return orderList;
+    }
 }

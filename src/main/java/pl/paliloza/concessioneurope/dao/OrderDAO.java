@@ -21,4 +21,7 @@ public interface OrderDAO extends JpaRepository<Order,Long> {
     @Modifying
     @Query(value = "insert into orders_table_processes (orders_table_id, processes_id) VALUES (:orderId, :processId) order by procedure",nativeQuery = true)
     void insertNewStep(@Param("orderId") Long orderId,@Param("processId") Long processId) ;
+
+    @Query(value = "select * from orders_table where order_status_id = :status_id" ,nativeQuery = true)
+    List<Order> findAllByOrderStatus(@Param("status_id") Long id);
 }

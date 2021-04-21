@@ -528,6 +528,13 @@ public class MainController {
         return "redirect:/transport";
     }
     // ===================================================================================
+
+
+    @GetMapping("/completedOrder")
+    public String completedOrderPanel(Model model){
+        model.addAttribute("completedOrders",orderService.getAllOrdersByStatusName("Zrealizowane"));
+        return "completedOrder";
+    }
 }
 
 
