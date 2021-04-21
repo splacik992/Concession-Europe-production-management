@@ -93,6 +93,9 @@
                                             <input type="hidden" value="${grinderyOrder.id}">
                                             <select name="nextStep">
                                                 <c:set var="orderId" value="${grinderyOrder.id}"/>
+                                                <c:if test="${grinderyOrder.processes.size() == 1}">
+                                                    <option value="End">Zakończ</option>
+                                                </c:if>
                                                 <c:forEach items="${grinderyOrder.processes}" var="process" begin="1">
                                                     <option value="${process.name}">${process.name}</option>
                                                 </c:forEach>

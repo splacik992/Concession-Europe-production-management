@@ -93,6 +93,9 @@
                                             <input type="hidden" value="${transportOrder.id}">
                                             <select name="nextStep">
                                                 <c:set var="orderId" value="${transportOrder.id}"/>
+                                                <c:if test="${transportOrder.processes.size() == 1}">
+                                                    <option value="End">Zakończ</option>
+                                                </c:if>
                                                 <c:forEach items="${transportOrder.processes}" var="process" begin="1">
                                                     <option value="${process.name}">${process.name}</option>
                                                 </c:forEach>

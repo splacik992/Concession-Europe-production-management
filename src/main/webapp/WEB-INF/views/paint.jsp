@@ -93,6 +93,9 @@
                                             <input type="hidden" value="${paintOrder.id}">
                                             <select name="nextStep">
                                                 <c:set var="orderId" value="${paintOrder.id}"/>
+                                                <c:if test="${paintOrder.processes.size() == 1}">
+                                                    <option value="End">Zakończ</option>
+                                                </c:if>
                                                 <c:forEach items="${paintOrder.processes}" var="process" begin="1">
                                                     <option value="${process.name}">${process.name}</option>
                                                 </c:forEach>
