@@ -392,6 +392,49 @@ public class MainController {
         return "redirect:/assembly";
     }
     // ===================================================================================
+
+    // Pakowanie ======================================================
+    @GetMapping("/packing")
+    public String viewPacking(Model model) {
+        model.addAttribute("packingOrdersPerDay",planOfTheDayService.showAllPlansByName("Pakowanie"));
+        model.addAttribute("packingOrdersDesc",orderService.getAllOrdersByName("Pakowanie"));
+        model.addAttribute("orders", orderService.getAllOrders());
+        model.addAttribute("statuses", orderService.orderShow());
+        model.addAttribute("processesList", orderService.processesShow());
+        model.addAttribute("order", new Order());
+        return "packing";
+    }
+    @PostMapping("/packingAdd")
+    public String packingPostAdd(@RequestParam String id){
+        planOfTheDayService.addToTheList(id,"Pakowanie");
+        return "redirect:/packing";
+    }
+
+    @PostMapping("/packingRemove")
+    public String packingPostRemove(@RequestParam String id){
+        planOfTheDayService.removeFromTheList(id,"Pakowanie");
+        return "redirect:/packing";
+    }
+
+    @PostMapping("/packingSelect")
+    public String packingPostSelect(@RequestParam String nextStep, @RequestParam String id){
+        if(!nextStep.equals("Zgłoś uwagi")) {
+            orderService.goToAnotherStep(nextStep, id);
+            orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "Pakowanie");
+        }
+        return "redirect:/packing";
+    }
+
+    @PostMapping("/packingSelectPop")
+    public String packingPostSelectPop(@RequestParam String nextStep, @RequestParam String id, @RequestParam String comments){
+        orderService.goToAnotherStepPop(nextStep, id);
+        orderService.commentsAdd(comments,id);
+        planOfTheDayService.removeFromTheList(id, "Pakowanie");
+
+        return "redirect:/packing";
+    }
+    // ===================================================================================
 }
 
 
