@@ -127,6 +127,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         let product = document.querySelector('#productName').value;
         let client = document.querySelector('#clientName').value;
         let count = document.querySelector('#count').value;
+        let principal = document.querySelector('#principal').value;
         let processName = document.querySelectorAll('input:checked');
         console.log(processName);
         if(processName.length === 0){
@@ -135,7 +136,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
             location.reload();
             return false;
         }
-        if(material == null || material === '' || product == null || product === '' || client == null || client === '' || count === '0' || count === null || count === ''){
+        if(material == null || material === '' || product == null || product === '' || client == null || client === '' || count === '0' || count === null || count === '' ||
+        principal == null || principal === '' ){
             alert("Wypełnij poprawnie wszystie pola formularza !");
             window.stop();
             location.reload();

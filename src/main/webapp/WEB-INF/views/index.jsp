@@ -41,14 +41,19 @@
                                                 id="productName"
                                                 placeholder="Nazwa produktu" name="product"/>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <form:input path="clientName" type="text" class="form-control form-control-user"
                                                 id="clientName"
                                                 placeholder="Klient" name="client"/>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-1">
                                     <form:input path="count" type="number" class="form-control form-control-user"
                                                 id="count" placeholder="Ilość" name="count" min="1" value="1"/>
+                                </div>
+                                <div class="col-sm-2">
+                                    <form:input path="principal" type="text" class="form-control form-control-user"
+                                                id="principal"
+                                                placeholder="Zleceniodawca" name="principal"/>
                                 </div>
                                 <button type="submit" id="addOrderButton" class="btn btn-lg btn-primary shadow-sm" >Dodaj</button>
 
