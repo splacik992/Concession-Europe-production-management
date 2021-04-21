@@ -124,6 +124,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Status zamówienia:</h6>
                     <a class="collapse-item" href="/completedOrder">Zrealizowane</a>
+                    <a class="collapse-item" href="/inProgress">W trakcie realizacji</a>
                 </div>
             </div>
         </li>

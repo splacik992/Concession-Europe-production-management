@@ -535,6 +535,11 @@ public class MainController {
         model.addAttribute("completedOrders",orderService.getAllOrdersByStatusName("Zrealizowane"));
         return "completedOrder";
     }
+    @GetMapping("/inProgress")
+    public String inProgressOrderPanel(Model model){
+        model.addAttribute("inProgressOrders",orderService.getAllOrdersByStatusName("W trakcie"));
+        return "inProgress";
+    }
 }
 
 
