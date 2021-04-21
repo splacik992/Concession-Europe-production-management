@@ -102,7 +102,7 @@
                     <a class="collapse-item" href="/cnc">CNC</a>
                     <a class="collapse-item" href="/press">Prasa</a>
                     <a class="collapse-item" href="/grindery">Szlifiernia</a>
-                    <a class="collapse-item" href="utilities-color.html">Lakiernia</a>
+                    <a class="collapse-item" href="/paint">Lakiernia</a>
                     <a class="collapse-item" href="utilities-color.html">Dział drzewny</a>
                     <a class="collapse-item" href="utilities-color.html">Montaż</a>
                     <a class="collapse-item" href="utilities-color.html">Pakowanie</a>

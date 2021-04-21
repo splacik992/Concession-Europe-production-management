@@ -262,6 +262,49 @@ public class MainController {
         return "redirect:/grindery";
     }
     // ===================================================================================
+
+    // Szlifiernia ======================================================
+    @GetMapping("/paint")
+    public String viewPaint(Model model) {
+        model.addAttribute("paintOrdersPerDay",planOfTheDayService.showAllPlansByName("Lakiernia"));
+        model.addAttribute("paintOrdersDesc",orderService.getAllOrdersByName("Lakiernia"));
+        model.addAttribute("orders", orderService.getAllOrders());
+        model.addAttribute("statuses", orderService.orderShow());
+        model.addAttribute("processesList", orderService.processesShow());
+        model.addAttribute("order", new Order());
+        return "paint";
+    }
+    @PostMapping("/paintAdd")
+    public String paintPostAdd(@RequestParam String id){
+        planOfTheDayService.addToTheList(id,"Lakiernia");
+        return "redirect:/paint";
+    }
+
+    @PostMapping("/paintRemove")
+    public String paintPostRemove(@RequestParam String id){
+        planOfTheDayService.removeFromTheList(id,"Lakiernia");
+        return "redirect:/paint";
+    }
+
+    @PostMapping("/paintSelect")
+    public String paintPostSelect(@RequestParam String nextStep, @RequestParam String id){
+        if(!nextStep.equals("Zgłoś uwagi")) {
+            orderService.goToAnotherStep(nextStep, id);
+            orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "Lakiernia");
+        }
+        return "redirect:/paint";
+    }
+
+    @PostMapping("/paintSelectPop")
+    public String paintPostSelectPop(@RequestParam String nextStep, @RequestParam String id, @RequestParam String comments){
+        orderService.goToAnotherStepPop(nextStep, id);
+        orderService.commentsAdd(comments,id);
+        planOfTheDayService.removeFromTheList(id, "Lakiernia");
+
+        return "redirect:/paint";
+    }
+    // ===================================================================================
 }
 
 
