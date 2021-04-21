@@ -100,7 +100,7 @@
                     <a class="collapse-item" href="/pila">Piła panelowa</a>
                     <a class="collapse-item" href="/edgebander">Okleiniarka</a>
                     <a class="collapse-item" href="/cnc">CNC</a>
-                    <a class="collapse-item" href="utilities-color.html">Prasa</a>
+                    <a class="collapse-item" href="/press">Prasa</a>
                     <a class="collapse-item" href="utilities-color.html">Szlifiernia</a>
                     <a class="collapse-item" href="utilities-color.html">Lakiernia</a>
                     <a class="collapse-item" href="utilities-color.html">Dział drzewny</a>
