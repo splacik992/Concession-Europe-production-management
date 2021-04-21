@@ -435,6 +435,49 @@ public class MainController {
         return "redirect:/packing";
     }
     // ===================================================================================
+
+    // Transport ======================================================
+    @GetMapping("/transport")
+    public String viewTransport(Model model) {
+        model.addAttribute("transportOrdersPerDay",planOfTheDayService.showAllPlansByName("Transport"));
+        model.addAttribute("transportOrdersDesc",orderService.getAllOrdersByName("Transport"));
+        model.addAttribute("orders", orderService.getAllOrders());
+        model.addAttribute("statuses", orderService.orderShow());
+        model.addAttribute("processesList", orderService.processesShow());
+        model.addAttribute("order", new Order());
+        return "transport";
+    }
+    @PostMapping("/transportAdd")
+    public String transportPostAdd(@RequestParam String id){
+        planOfTheDayService.addToTheList(id,"Transport");
+        return "redirect:/transport";
+    }
+
+    @PostMapping("/transportRemove")
+    public String transportPostRemove(@RequestParam String id){
+        planOfTheDayService.removeFromTheList(id,"Transport");
+        return "redirect:/transport";
+    }
+
+    @PostMapping("/transportSelect")
+    public String transportPostSelect(@RequestParam String nextStep, @RequestParam String id){
+        if(!nextStep.equals("Zgłoś uwagi")) {
+            orderService.goToAnotherStep(nextStep, id);
+            orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "Transport");
+        }
+        return "redirect:/transport";
+    }
+
+    @PostMapping("/transportSelectPop")
+    public String transportPostSelectPop(@RequestParam String nextStep, @RequestParam String id, @RequestParam String comments){
+        orderService.goToAnotherStepPop(nextStep, id);
+        orderService.commentsAdd(comments,id);
+        planOfTheDayService.removeFromTheList(id, "Transport");
+
+        return "redirect:/transport";
+    }
+    // ===================================================================================
 }
 
 
