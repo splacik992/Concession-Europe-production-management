@@ -306,6 +306,7 @@ public class MainController {
     }
     // ===================================================================================
 
+
     // Dział drzewny ======================================================
     @GetMapping("/woody")
     public String viewWoody(Model model) {
@@ -346,6 +347,49 @@ public class MainController {
         planOfTheDayService.removeFromTheList(id, "Dział drzewny");
 
         return "redirect:/woody";
+    }
+    // ===================================================================================
+
+    // Montaż ======================================================
+    @GetMapping("/assembly")
+    public String viewAssembly(Model model) {
+        model.addAttribute("assemblyOrdersPerDay",planOfTheDayService.showAllPlansByName("Montaż"));
+        model.addAttribute("assemblyOrdersDesc",orderService.getAllOrdersByName("Montaż"));
+        model.addAttribute("orders", orderService.getAllOrders());
+        model.addAttribute("statuses", orderService.orderShow());
+        model.addAttribute("processesList", orderService.processesShow());
+        model.addAttribute("order", new Order());
+        return "assembly";
+    }
+    @PostMapping("/assemblyAdd")
+    public String assemblyPostAdd(@RequestParam String id){
+        planOfTheDayService.addToTheList(id,"Montaż");
+        return "redirect:/assembly";
+    }
+
+    @PostMapping("/assemblyRemove")
+    public String assemblyPostRemove(@RequestParam String id){
+        planOfTheDayService.removeFromTheList(id,"Montaż");
+        return "redirect:/assembly";
+    }
+
+    @PostMapping("/assemblySelect")
+    public String assemblyPostSelect(@RequestParam String nextStep, @RequestParam String id){
+        if(!nextStep.equals("Zgłoś uwagi")) {
+            orderService.goToAnotherStep(nextStep, id);
+            orderService.commentsRemove(id);
+            planOfTheDayService.removeFromTheList(id, "Montaż");
+        }
+        return "redirect:/assembly";
+    }
+
+    @PostMapping("/assemblySelectPop")
+    public String assemblyPostSelectPop(@RequestParam String nextStep, @RequestParam String id, @RequestParam String comments){
+        orderService.goToAnotherStepPop(nextStep, id);
+        orderService.commentsAdd(comments,id);
+        planOfTheDayService.removeFromTheList(id, "Montaż");
+
+        return "redirect:/assembly";
     }
     // ===================================================================================
 }
