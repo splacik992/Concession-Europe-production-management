@@ -88,7 +88,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <h5 class="text-gray-900 mb-4">Wyszukiwaka</h5>
+                <h5 class="text-gray-900 mb-4">Wyszukiwarka</h5>
             </div>
             <div class="input-group">
                 <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Wyszukaj zamówienie po..." id="searchBar">
