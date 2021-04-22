@@ -187,11 +187,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
                         break;
                 }
 
-
-
-
-
-
             })
         })
     }
