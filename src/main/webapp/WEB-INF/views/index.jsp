@@ -55,7 +55,9 @@
                                                 id="principal"
                                                 placeholder="Zleceniodawca" name="principal"/>
                                 </div>
-                                <button type="submit" id="addOrderButton" class="btn btn-lg btn-primary shadow-sm" >Dodaj</button>
+                                <button type="submit" id="addOrderButton" class="btn btn-lg btn-primary shadow-sm">
+                                    Dodaj
+                                </button>
 
                             </div>
                             <section>
@@ -91,7 +93,8 @@
                 <h5 class="text-gray-900 mb-4">Wyszukiwarka</h5>
             </div>
             <div class="input-group">
-                <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Wyszukaj zamówienie po..." id="searchBar">
+                <input type="text" class="form-control" aria-label="Text input with dropdown button"
+                       placeholder="Wyszukaj zamówienie po..." id="searchBar">
                 <div class="input-group-append">
                     <select id="searchSelect" class="dropdown">
 
@@ -108,8 +111,9 @@
             </div>
             <hr>
             <div class="card shadow mb-4">
-                <div class="card-header py-3 text-left">
+                <div class="card-header py-3 row d-flex justify-content-between">
                     <h4 class="m-0 font-weight-bold text-primary">Zamówienia</h4>
+                    <a href="/order/export/excel" class="btn btn-sm btn-primary shadow-sm">Zapisz na dysk</a>
                 </div>
 
                 <div class="card-body">
@@ -143,12 +147,13 @@
 
                                     <td>${order.orderStatus.name}</td>
                                     <c:if test="${order.processes.size() != 0}">
-                                    <c:set var="string6" value="${fn:split(order.processes.get(0).name, ' ')}"/>
-                                    <c:set var="string7" value="${fn:join(string6, '-')}1"/>
+                                        <c:set var="string6" value="${fn:split(order.processes.get(0).name, ' ')}"/>
+                                        <c:set var="string7" value="${fn:join(string6, '-')}1"/>
                                     </c:if>
                                     <td>
                                         <c:if test="${order.processes.size() != 0}">
-                                        <div class="actualState" id="${string7}">${order.processes.get(0).name}</div>
+                                            <div class="actualState"
+                                                 id="${string7}">${order.processes.get(0).name}</div>
                                         </c:if>
                                     </td>
                                     <td class="tableRow">
