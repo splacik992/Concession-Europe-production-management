@@ -107,12 +107,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
 //     }
 // })
 
-    let newURL = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname;
-    console.log(newURL);
-    if(newURL === "http://localhost:8081//") {
+
         let form = document.querySelector("[name='form']");
         console.log(form);
-
+    if(form !== null) {
         form.addEventListener('submit', evt => {
             evt.preventDefault();
             if (formValidation() === true) {
@@ -120,9 +118,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }
 
         })
+    }
 
 
         let searchBar = document.querySelector("#searchBar");
+    if(searchBar !== null) {
         searchBar.addEventListener('input', evt => {
             let selectedValue = document.querySelector("#searchSelect");
             let input = searchBar.value.toUpperCase();
