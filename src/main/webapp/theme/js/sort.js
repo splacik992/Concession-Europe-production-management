@@ -86,8 +86,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     })
 
 
-
-
     popForms.forEach(el => {
         el.addEventListener('submit', e => {
             popDivToHide.classList.add('d-none');
@@ -102,8 +100,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     })
 
 
-
-
 // goToNextProcessButton.addEventListener('click', e => {
 //     e.preventDefault();
 //     if (select.value === 'Zgłoś uwagi') {
@@ -113,15 +109,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let form = document.querySelector("[name='form']");
     console.log(form);
 
-    form.addEventListener('submit',evt => {
+    form.addEventListener('submit', evt => {
         evt.preventDefault();
-        if(formValidation() === true){
+        if (formValidation() === true) {
             form.submit();
         }
 
     })
 
-    function formValidation(){
+    function formValidation() {
         let material = document.querySelector('#material').value;
         console.log(material);
         let product = document.querySelector('#productName').value;
@@ -130,14 +126,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
         let principal = document.querySelector('#principal').value;
         let processName = document.querySelectorAll('input:checked');
         console.log(processName);
-        if(processName.length === 0){
+        if (processName.length === 0) {
             alert("Ustal kolejność produkcji.");
             window.stop();
             location.reload();
             return false;
         }
-        if(material == null || material === '' || product == null || product === '' || client == null || client === '' || count === '0' || count === null || count === '' ||
-        principal == null || principal === '' ){
+        if (material == null || material === '' || product == null || product === '' || client == null || client === '' || count === '0' || count === null || count === '' ||
+            principal == null || principal === '') {
             alert("Wypełnij poprawnie wszystie pola formularza !");
             window.stop();
             location.reload();
@@ -145,4 +141,79 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
         return true;
     }
+
+
+    let searchBar = document.querySelector("#searchBar");
+    searchBar.addEventListener('input', evt => {
+        let selectedValue = document.querySelector("#searchSelect");
+        let input = searchBar.value.toUpperCase();
+        let dataTableRows = document.querySelectorAll(".rowOfData");
+        dataTableRows.forEach(el => {
+            let number = el.children[0].innerText;
+            let material = el.children[1].innerText;
+            let productName = el.children[2].innerText;
+            let client = el.children[3].innerText;
+            let principal = el.children[5].innerText;
+            let date = el.children[6].innerText;
+            let status = el.children[7].innerText;
+            switch (selectedValue.value) {
+                case 'number':
+                    if (number.toUpperCase().indexOf(input) > -1) {
+                        el.style.display = "";
+                    } else {
+                        el.style.display = "none";
+                    }
+                    break;
+                case 'material':
+                    if (material.toUpperCase().indexOf(input) > -1) {
+                        el.style.display = "";
+                    } else {
+                        el.style.display = "none";
+                    }
+                    break;
+                case 'name':
+                    if (productName.toUpperCase().indexOf(input) > -1) {
+                        el.style.display = "";
+                    } else {
+                        el.style.display = "none";
+                    }
+                    break;
+                case 'client':
+                    if (client.toUpperCase().indexOf(input) > -1) {
+                        el.style.display = "";
+                    } else {
+                        el.style.display = "none";
+                    }
+                    break;
+                case 'principal':
+                    if (principal.toUpperCase().indexOf(input) > -1) {
+                        el.style.display = "";
+                    } else {
+                        el.style.display = "none";
+                    }
+                    break;
+                case 'date':
+                    if (date.toUpperCase().indexOf(input) > -1) {
+                        el.style.display = "";
+                    } else {
+                        el.style.display = "none";
+                    }
+                    break;
+                case 'status':
+                    if (status.toUpperCase().indexOf(input) > -1) {
+                        el.style.display = "";
+                    } else {
+                        el.style.display = "none";
+                    }
+                    break;
+            }
+
+
+
+
+
+
+        })
+    })
+
 });

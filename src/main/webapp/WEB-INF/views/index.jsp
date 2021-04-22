@@ -87,9 +87,29 @@
                     </div>
                 </div>
             </div>
+            <div class="text-center">
+                <h5 class="text-gray-900 mb-4">Wyszukiwaka</h5>
+            </div>
+            <div class="input-group">
+                <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Wyszukaj zamówienie po..." id="searchBar">
+                <div class="input-group-append">
+                    <select id="searchSelect" class="dropdown">
+
+                        <option class="selectOption" value="number">numer zamówienia</option>
+                        <option class="selectOption" value="material">materiał</option>
+                        <option class="selectOption" value="name">nazwa produktu</option>
+                        <option class="selectOption" value="client">klient</option>
+                        <option class="selectOption" value="principal">zleceniodawca</option>
+                        <option class="selectOption" value="date">data</option>
+                        <option class="selectOption" value="status">status zamówienia</option>
+
+                    </select>
+                </div>
+            </div>
+            <hr>
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Zamówienia</h6>
+                <div class="card-header py-3 text-left">
+                    <h4 class="m-0 font-weight-bold text-primary">Zamówienia</h4>
                 </div>
 
                 <div class="card-body">
@@ -112,7 +132,7 @@
                             </thead>
                             <tbody>
                             <c:forEach items="${orders}" var="order">
-                                <tr class="tableRow">
+                                <tr class="tableRow rowOfData">
                                     <td>${order.id}</td>
                                     <td>${order.materialName}</td>
                                     <td>${order.productName}</td>

@@ -2459,6 +2459,13 @@ textarea.form-control {
 .tableRow{
   line-height: 30px;
 }
+#searchBar{
+  margin-bottom: 10px;
+  border-style: groove;
+}
+#searchSelect{
+  margin-bottom: 10px;
+}
 
 .containerForInputs{
   display: block;
