@@ -45,7 +45,7 @@
                             <tbody id="sawDay">
                             <c:forEach items="${packingOrdersPerDay}" var="packingOrder">
 
-                                <tr class="tableRowDay">
+                                <tr class="tableRowDay perDayTable2">
                                     <td>${packingOrder.id}</td>
                                     <td>${packingOrder.materialName}</td>
                                     <td>${packingOrder.productName}</td>
@@ -83,7 +83,7 @@
                                     <td>
                                         <form action="/packingRemove" method="post">
                                             <input name="id" type="hidden" value="${packingOrder.id}">
-                                            <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit"
+                                            <button class="btn btn-sm btn-primary shadow-sm" type="submit"
                                                     value="${packingOrder.id}">Usuń
                                             </button>
                                         </form>
@@ -146,7 +146,7 @@
                             <tbody>
                             <c:forEach items="${packingOrdersDesc}" var="packingOrder">
 
-                                <tr class="tableRow">
+                                <tr class="tableRow perDayTable">
                                     <td>${packingOrder.id}</td>
                                     <td>${packingOrder.materialName}</td>
                                     <td>${packingOrder.productName}</td>
@@ -182,7 +182,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="/packingAdd" method="post">
+                                        <form action="/packingAdd" method="post" class="formAddToDay">
                                             <input name="id" type="hidden" value="${packingOrder.id}">
                                             <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit"
                                                     value="${packingOrder.id}">Dodaj

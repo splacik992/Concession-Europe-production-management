@@ -45,7 +45,7 @@
                             <tbody id="sawDay">
                             <c:forEach items="${assemblyOrdersPerDay}" var="assemblyOrder">
 
-                                <tr class="tableRowDay">
+                                <tr class="tableRowDay perDayTable2">
                                     <td>${assemblyOrder.id}</td>
                                     <td>${assemblyOrder.materialName}</td>
                                     <td>${assemblyOrder.productName}</td>
@@ -83,7 +83,7 @@
                                     <td>
                                         <form action="/assemblyRemove" method="post">
                                             <input name="id" type="hidden" value="${assemblyOrder.id}">
-                                            <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit"
+                                            <button class="btn btn-sm btn-primary shadow-sm" type="submit"
                                                     value="${assemblyOrder.id}">Usuń
                                             </button>
                                         </form>
@@ -146,7 +146,7 @@
                             <tbody>
                             <c:forEach items="${assemblyOrdersDesc}" var="assemblyOrder">
 
-                                <tr class="tableRow">
+                                <tr class="tableRow perDayTable">
                                     <td>${assemblyOrder.id}</td>
                                     <td>${assemblyOrder.materialName}</td>
                                     <td>${assemblyOrder.productName}</td>
@@ -182,7 +182,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="/assemblyAdd" method="post">
+                                        <form action="/assemblyAdd" method="post" class="formAddToDay">
                                             <input name="id" type="hidden" value="${assemblyOrder.id}">
                                             <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit"
                                                     value="${assemblyOrder.id}">Dodaj

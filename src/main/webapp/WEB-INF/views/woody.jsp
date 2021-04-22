@@ -45,7 +45,7 @@
                             <tbody id="sawDay">
                             <c:forEach items="${woodyOrdersPerDay}" var="woodyOrder">
 
-                                <tr class="tableRowDay">
+                                <tr class="tableRowDay perDayTable2">
                                     <td>${woodyOrder.id}</td>
                                     <td>${woodyOrder.materialName}</td>
                                     <td>${woodyOrder.productName}</td>
@@ -146,7 +146,7 @@
                             <tbody>
                             <c:forEach items="${woodyOrdersDesc}" var="woodyOrder">
 
-                                <tr class="tableRow">
+                                <tr class="tableRow perDayTable">
                                     <td>${woodyOrder.id}</td>
                                     <td>${woodyOrder.materialName}</td>
                                     <td>${woodyOrder.productName}</td>
@@ -182,7 +182,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="/woodyAdd" method="post">
+                                        <form action="/woodyAdd" method="post" class="formAddToDay">
                                             <input name="id" type="hidden" value="${woodyOrder.id}">
                                             <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit"
                                                     value="${woodyOrder.id}">Dodaj

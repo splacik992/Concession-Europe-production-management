@@ -110,7 +110,7 @@
                             <tbody id="sawDay">
                             <c:forEach items="${edgebanderOrdersPerDay}" var="edgebanderOrder">
 
-                                <tr class="tableRowDay">
+                                <tr class="tableRowDay perDayTable2">
                                     <td>${edgebanderOrder.id}</td>
                                     <td>${edgebanderOrder.materialName}</td>
                                     <td>${edgebanderOrder.productName}</td>
@@ -211,7 +211,7 @@
                             <tbody>
                             <c:forEach items="${edgebanderOrders}" var="edgebanderOrder">
 
-                                <tr class="tableRow">
+                                <tr class="tableRow perDayTable">
                                     <td>${edgebanderOrder.id}</td>
                                     <td>${edgebanderOrder.materialName}</td>
                                     <td>${edgebanderOrder.productName}</td>
@@ -247,7 +247,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="/edgebanderAdd" method="post">
+                                        <form action="/edgebanderAdd" method="post" class="formAddToDay">
                                             <input name="id" type="hidden" value="${edgebanderOrder.id}">
                                             <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit"
                                                     value="${edgebanderOrder.id}">Dodaj

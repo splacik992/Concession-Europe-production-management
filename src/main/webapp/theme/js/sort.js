@@ -106,16 +106,95 @@ window.addEventListener('DOMContentLoaded', (event) => {
 //             popDivToHide.classList.remove('d-none');
 //     }
 // })
-    let form = document.querySelector("[name='form']");
-    console.log(form);
 
-    form.addEventListener('submit', evt => {
-        evt.preventDefault();
-        if (formValidation() === true) {
-            form.submit();
-        }
+    let newURL = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname;
+    console.log(newURL);
+    if(newURL === "http://localhost:8081//") {
+        let form = document.querySelector("[name='form']");
+        console.log(form);
 
-    })
+        form.addEventListener('submit', evt => {
+            evt.preventDefault();
+            if (formValidation() === true) {
+                form.submit();
+            }
+
+        })
+
+
+        let searchBar = document.querySelector("#searchBar");
+        searchBar.addEventListener('input', evt => {
+            let selectedValue = document.querySelector("#searchSelect");
+            let input = searchBar.value.toUpperCase();
+            let dataTableRows = document.querySelectorAll(".rowOfData");
+            dataTableRows.forEach(el => {
+                let number = el.children[0].innerText;
+                let material = el.children[1].innerText;
+                let productName = el.children[2].innerText;
+                let client = el.children[3].innerText;
+                let principal = el.children[5].innerText;
+                let date = el.children[6].innerText;
+                let status = el.children[7].innerText;
+                switch (selectedValue.value) {
+                    case 'number':
+                        if (number.toUpperCase().indexOf(input) > -1) {
+                            el.style.display = "";
+                        } else {
+                            el.style.display = "none";
+                        }
+                        break;
+                    case 'material':
+                        if (material.toUpperCase().indexOf(input) > -1) {
+                            el.style.display = "";
+                        } else {
+                            el.style.display = "none";
+                        }
+                        break;
+                    case 'name':
+                        if (productName.toUpperCase().indexOf(input) > -1) {
+                            el.style.display = "";
+                        } else {
+                            el.style.display = "none";
+                        }
+                        break;
+                    case 'client':
+                        if (client.toUpperCase().indexOf(input) > -1) {
+                            el.style.display = "";
+                        } else {
+                            el.style.display = "none";
+                        }
+                        break;
+                    case 'principal':
+                        if (principal.toUpperCase().indexOf(input) > -1) {
+                            el.style.display = "";
+                        } else {
+                            el.style.display = "none";
+                        }
+                        break;
+                    case 'date':
+                        if (date.toUpperCase().indexOf(input) > -1) {
+                            el.style.display = "";
+                        } else {
+                            el.style.display = "none";
+                        }
+                        break;
+                    case 'status':
+                        if (status.toUpperCase().indexOf(input) > -1) {
+                            el.style.display = "";
+                        } else {
+                            el.style.display = "none";
+                        }
+                        break;
+                }
+
+
+
+
+
+
+            })
+        })
+    }
 
     function formValidation() {
         let material = document.querySelector('#material').value;
@@ -142,78 +221,28 @@ window.addEventListener('DOMContentLoaded', (event) => {
         return true;
     }
 
+    let perDayTable = document.querySelector(".perDayTable");
+    let perDayTable2 = document.querySelector(".perDayTable2");
 
-    let searchBar = document.querySelector("#searchBar");
-    searchBar.addEventListener('input', evt => {
-        let selectedValue = document.querySelector("#searchSelect");
-        let input = searchBar.value.toUpperCase();
-        let dataTableRows = document.querySelectorAll(".rowOfData");
-        dataTableRows.forEach(el => {
-            let number = el.children[0].innerText;
-            let material = el.children[1].innerText;
-            let productName = el.children[2].innerText;
-            let client = el.children[3].innerText;
-            let principal = el.children[5].innerText;
-            let date = el.children[6].innerText;
-            let status = el.children[7].innerText;
-            switch (selectedValue.value) {
-                case 'number':
-                    if (number.toUpperCase().indexOf(input) > -1) {
-                        el.style.display = "";
-                    } else {
-                        el.style.display = "none";
-                    }
-                    break;
-                case 'material':
-                    if (material.toUpperCase().indexOf(input) > -1) {
-                        el.style.display = "";
-                    } else {
-                        el.style.display = "none";
-                    }
-                    break;
-                case 'name':
-                    if (productName.toUpperCase().indexOf(input) > -1) {
-                        el.style.display = "";
-                    } else {
-                        el.style.display = "none";
-                    }
-                    break;
-                case 'client':
-                    if (client.toUpperCase().indexOf(input) > -1) {
-                        el.style.display = "";
-                    } else {
-                        el.style.display = "none";
-                    }
-                    break;
-                case 'principal':
-                    if (principal.toUpperCase().indexOf(input) > -1) {
-                        el.style.display = "";
-                    } else {
-                        el.style.display = "none";
-                    }
-                    break;
-                case 'date':
-                    if (date.toUpperCase().indexOf(input) > -1) {
-                        el.style.display = "";
-                    } else {
-                        el.style.display = "none";
-                    }
-                    break;
-                case 'status':
-                    if (status.toUpperCase().indexOf(input) > -1) {
-                        el.style.display = "";
-                    } else {
-                        el.style.display = "none";
-                    }
-                    break;
+    let addToDayForms = document.querySelectorAll(".formAddToDay");
+
+    addToDayForms.forEach(el=>{
+        el.addEventListener('submit',evt => {
+            evt.preventDefault();
+            if(perDayTable2 == null){
+                el.submit();
             }
-
-
-
-
-
-
+            if(!(perDayTable.children[0].innerHTML === perDayTable2.children[0].innerHTML)){
+                el.submit();
+            }else{
+                alert("Zamówienie znajuje się na liście!");
+                location.reload();
+            }
         })
+
     })
+
+
+
 
 });

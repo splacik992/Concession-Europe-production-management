@@ -45,7 +45,7 @@
                             <tbody id="sawDay">
                             <c:forEach items="${transportOrdersPerDay}" var="transportOrder">
 
-                                <tr class="tableRowDay">
+                                <tr class="tableRowDay perDayTable2">
                                     <td>${transportOrder.id}</td>
                                     <td>${transportOrder.materialName}</td>
                                     <td>${transportOrder.productName}</td>
@@ -146,7 +146,7 @@
                             <tbody>
                             <c:forEach items="${transportOrdersDesc}" var="transportOrder">
 
-                                <tr class="tableRow">
+                                <tr class="tableRow perDayTable">
                                     <td>${transportOrder.id}</td>
                                     <td>${transportOrder.materialName}</td>
                                     <td>${transportOrder.productName}</td>
@@ -182,7 +182,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="/transportAdd" method="post">
+                                        <form action="/transportAdd" method="post" class="formAddToDay">
                                             <input name="id" type="hidden" value="${transportOrder.id}">
                                             <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit"
                                                     value="${transportOrder.id}">Dodaj

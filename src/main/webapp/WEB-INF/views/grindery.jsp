@@ -45,7 +45,7 @@
                             <tbody id="sawDay">
                             <c:forEach items="${grinderyOrdersPerDay}" var="grinderyOrder">
 
-                                <tr class="tableRowDay">
+                                <tr class="tableRowDay perDayTable2">
                                     <td>${grinderyOrder.id}</td>
                                     <td>${grinderyOrder.materialName}</td>
                                     <td>${grinderyOrder.productName}</td>
@@ -146,7 +146,7 @@
                             <tbody>
                             <c:forEach items="${grinderyOrdersDesc}" var="grinderyOrder">
 
-                                <tr class="tableRow">
+                                <tr class="tableRow perDayTable">
                                     <td>${grinderyOrder.id}</td>
                                     <td>${grinderyOrder.materialName}</td>
                                     <td>${grinderyOrder.productName}</td>
@@ -182,7 +182,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="/grinderyAdd" method="post">
+                                        <form action="/grinderyAdd" method="post" class="formAddToDay">
                                             <input name="id" type="hidden" value="${grinderyOrder.id}">
                                             <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit"
                                                     value="${grinderyOrder.id}">Dodaj

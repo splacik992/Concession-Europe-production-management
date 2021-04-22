@@ -110,7 +110,7 @@
                             <tbody id="sawDay">
                             <c:forEach items="${cncOrdersPerDay}" var="cncOrder">
 
-                                <tr class="tableRowDay">
+                                <tr class="tableRowDay perDayTable2">
                                     <td>${cncOrder.id}</td>
                                     <td>${cncOrder.materialName}</td>
                                     <td>${cncOrder.productName}</td>
@@ -211,7 +211,7 @@
                             <tbody>
                             <c:forEach items="${cncOrders}" var="cncOrder">
 
-                                <tr class="tableRow">
+                                <tr class="tableRow perDayTable">
                                     <td>${cncOrder.id}</td>
                                     <td>${cncOrder.materialName}</td>
                                     <td>${cncOrder.productName}</td>
@@ -247,7 +247,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="/cncAdd" method="post">
+                                        <form action="/cncAdd" method="post" class="formAddToDay">
                                             <input name="id" type="hidden" value="${cncOrder.id}">
                                             <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit"
                                                     value="${cncOrder.id}">Dodaj

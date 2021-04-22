@@ -45,7 +45,7 @@
                             <tbody id="sawDay">
                             <c:forEach items="${pressOrdersPerDay}" var="pressOrder">
 
-                                <tr class="tableRowDay">
+                                <tr class="tableRowDay perDayTable2">
                                     <td>${pressOrder.id}</td>
                                     <td>${pressOrder.materialName}</td>
                                     <td>${pressOrder.productName}</td>
@@ -146,7 +146,7 @@
                             <tbody>
                             <c:forEach items="${pressOrders}" var="pressOrder">
 
-                                <tr class="tableRow">
+                                <tr class="tableRow perDayTable">
                                     <td>${pressOrder.id}</td>
                                     <td>${pressOrder.materialName}</td>
                                     <td>${pressOrder.productName}</td>
@@ -182,7 +182,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="/pressAdd" method="post">
+                                        <form action="/pressAdd" method="post" class="formAddToDay">
                                             <input name="id" type="hidden" value="${pressOrder.id}">
                                             <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit"
                                                     value="${pressOrder.id}">Dodaj

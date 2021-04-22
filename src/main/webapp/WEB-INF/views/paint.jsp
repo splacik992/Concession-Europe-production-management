@@ -45,7 +45,7 @@
                             <tbody id="sawDay">
                             <c:forEach items="${paintOrdersPerDay}" var="paintOrder">
 
-                                <tr class="tableRowDay">
+                                <tr class="tableRowDay perDayTable2">
                                     <td>${paintOrder.id}</td>
                                     <td>${paintOrder.materialName}</td>
                                     <td>${paintOrder.productName}</td>
@@ -146,7 +146,7 @@
                             <tbody>
                             <c:forEach items="${paintOrdersDesc}" var="paintOrder">
 
-                                <tr class="tableRow">
+                                <tr class="tableRow perDayTable">
                                     <td>${paintOrder.id}</td>
                                     <td>${paintOrder.materialName}</td>
                                     <td>${paintOrder.productName}</td>
@@ -182,7 +182,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="/paintAdd" method="post">
+                                        <form action="/paintAdd" method="post" class="formAddToDay">
                                             <input name="id" type="hidden" value="${paintOrder.id}">
                                             <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit"
                                                     value="${paintOrder.id}">Dodaj

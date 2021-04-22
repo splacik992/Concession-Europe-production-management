@@ -110,7 +110,7 @@
                             <tbody id="sawDay">
                             <c:forEach items="${sawOrdersPerDay}" var="sawOrder">
 
-                                <tr class="tableRowDay">
+                                <tr class="tableRowDay perDayTable">
                                     <td>${sawOrder.id}</td>
                                     <td>${sawOrder.materialName}</td>
                                     <td>${sawOrder.productName}</td>
@@ -209,7 +209,7 @@
                             <tbody>
                             <c:forEach items="${sawOrdersDesc}" var="sawOrder">
 
-                                <tr class="tableRow">
+                                <tr class="tableRow perDayTable">
                                     <td>${sawOrder.id}</td>
                                     <td>${sawOrder.materialName}</td>
                                     <td>${sawOrder.productName}</td>
@@ -243,7 +243,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="/pilaAdd" method="post">
+                                        <form action="/pilaAdd" method="post" class="formAddToDay">
                                             <input name="id" type="hidden" value="${sawOrder.id}">
                                             <button class="btn btn-sm btn-primary shadow-sm addToDay" type="submit"
                                                     value="${sawOrder.id}">Dodaj
